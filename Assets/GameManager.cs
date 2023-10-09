@@ -8,17 +8,20 @@ public class GameManager : MonoBehaviour
 
     public GameObject player;
     public bool isPlaying = false;
+    public ScriptableInteger score;
+    public ScriptableInteger flag;
+    public ScriptableInteger healthScriptable;
 
     private void Awake()
     {
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(this.gameObject); // this will persist across scenes
+            DontDestroyOnLoad(gameObject); // this will persist across scenes
         }
         else
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
 
         player = GameObject.FindGameObjectWithTag("Player");
