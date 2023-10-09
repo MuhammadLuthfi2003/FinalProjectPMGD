@@ -1,0 +1,63 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEditor.ShaderGraph;
+using UnityEngine;
+
+public class PlayerHide : MonoBehaviour
+{
+    [SerializeField] Color32 hideColor;
+    [SerializeField] KeyCode hideButton;
+    [Tooltip("Order in Layer of SpriteRenderer to hide in")]
+    [SerializeField] int hideLayer = 0; 
+
+    bool canHide = false;
+    public bool isHiding = false;
+
+    private SpriteRenderer sprite;
+    private Color32 originalColor;
+    private int originalLayer;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        sprite = GetComponent<SpriteRenderer>();
+        originalColor = sprite.color;
+        originalLayer = sprite.sortingOrder;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (Input.GetKey(hideButton) && canHide)
+        {
+            isHiding = true;
+            sprite.color = hideColor;
+            sprite.sortingOrder = hideLayer;
+        }
+        else
+        {
+            isHiding = false;
+            sprite.color = originalColor;
+            sprite.sortingOrder = originalLayer;
+        }
+    }
+
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "HideArea")
+        {
+            canHide = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "HideArea")
+        {
+            canHide = false;
+        }
+    }
+}
+
+
