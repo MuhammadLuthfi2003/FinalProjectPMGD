@@ -455,6 +455,7 @@ GameObject:
   - component: {fileID: 679665852}
   - component: {fileID: 679665853}
   - component: {fileID: 679665854}
+  - component: {fileID: 679665855}
   m_Layer: 0
   m_Name: player
   m_TagString: Player
@@ -578,6 +579,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 074515a3609e4d248a36e81924e29d39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isFacingRight: 1
   moveSpeed: 5
   jumpForce: 5
   jumpableGround:
@@ -598,7 +600,7 @@ MonoBehaviour:
   hideColor:
     serializedVersion: 2
     rgba: 4287861651
-  hideButton: 114
+  hideButton: 323
   hideLayer: 0
   isHiding: 0
 --- !u!114 &679665854
@@ -615,6 +617,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 3
   maxHealth: 3
+--- !u!114 &679665855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 679665847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b396d76c16c62f45ba6169c481162fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerController: {fileID: 679665852}
+  attackRange: 1.97
+  attackDamage: 3
+  attackButton: 101
+  attackInterval: 1
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 1
+  distanceCollider: 0.75
+  collider: {fileID: 679665851}
 --- !u!1 &775231927
 GameObject:
   m_ObjectHideFlags: 0
@@ -1135,9 +1159,10 @@ GameObject:
   - component: {fileID: 1884812782}
   - component: {fileID: 1884812783}
   - component: {fileID: 1884812784}
+  - component: {fileID: 1884812785}
   m_Layer: 0
   m_Name: Gunner_Green_Crouch_0
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1321,6 +1346,20 @@ MonoBehaviour:
   bulletPrefab: {fileID: 7608130508133823269, guid: d355ef808dc4d5744a769c9c47266f0d, type: 3}
   shootInterval: 3
   shootRightDirection: 0
+--- !u!114 &1884812785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1884812777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a069e4efde272994ebf4b7a58eb9442f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 3
+  maxHealth: 3
 --- !u!1 &2133306743
 GameObject:
   m_ObjectHideFlags: 0

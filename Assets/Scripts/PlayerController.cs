@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     private Animator anim;
     private SpriteRenderer sprite;
 
-    private bool doubleJump;
+    public bool isFacingRight = true;
 
     private float dirX = 0;
     [SerializeField] private float moveSpeed = 7f;
@@ -34,6 +34,11 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         dirX = Input.GetAxisRaw("Horizontal");
+        if (dirX != 0)
+        {
+            isFacingRight = dirX > 0;
+        }
+
         rb.velocity = new Vector2(dirX * moveSpeed, rb.velocity.y);
 
         if (rb.velocity.x != 0 && IsGrounded())
@@ -48,18 +53,12 @@ public class PlayerController : MonoBehaviour
            // stepSound.Stop();
         }
 
-        if (IsGrounded() && !Input.GetButton("Jump"))
-        {
-            doubleJump = false;
-        }
-
         if (Input.GetButtonDown("Jump"))
         {
 
-            if (IsGrounded() || doubleJump)
+            if (IsGrounded())
             {
                 rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-                doubleJump = !doubleJump;
                 //jumpSound.Play();
             }
         }
