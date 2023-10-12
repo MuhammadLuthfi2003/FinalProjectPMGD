@@ -63,7 +63,7 @@ public class DialogueTrigger : MonoBehaviour
     void TriggerDialogue()
     {
         ReadTextFile(); // loads in the text file
-        dialogueManager = FindObjectOfType<DialogueManager>();
+        dialogueManager = DialogueManager.instance; // gets the dialogue manager
         dialogueManager.StartDialogue(dialogue); // Accesses Dialogue Manager and Starts Dialogue
     }
 
@@ -130,7 +130,7 @@ public class DialogueTrigger : MonoBehaviour
 
     private void OutputLine()
     {
-        if (Input.GetKeyDown(KeyCode.F) && nextTime < Time.timeSinceLevelLoad && !dialogueManager.isQuestion)
+        if (Input.GetKeyDown(KeyCode.F) && nextTime < Time.timeSinceLevelLoad && !dialogueManager.isQuestion && dialogueManager.isOpen)
         {
             if (!dialogueTiggered)
             {

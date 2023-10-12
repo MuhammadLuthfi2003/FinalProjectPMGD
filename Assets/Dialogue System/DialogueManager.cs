@@ -16,6 +16,8 @@ using static System.Net.Mime.MediaTypeNames;
 
 public class DialogueManager : MonoBehaviour
 {
+    public static DialogueManager instance;
+
     public GameObject CanvasBox; // your fancy canvas box that holds your text objects
     public UnityEngine.UI.Text TextBox; // the text body
     public UnityEngine.UI.Text NameText; // the text body of the name you want to display
@@ -27,12 +29,24 @@ public class DialogueManager : MonoBehaviour
     public bool freezePlayerOnDialogue = true;
 
 
-    // private bool isOpen; // represents if the dialogue box is open or closed
+    public bool isOpen; // represents if the dialogue box is open or closed
 
     private Queue<string> inputStream = new Queue<string>(); // stores dialogue
     public bool isQuestion = false;
     private int optionRemaining = 0;
     //private PlayerAnimController animController;
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(this); // only one dialogue manager allowed
+        }
+    }
 
     private void Start()
     {
@@ -76,7 +90,7 @@ public class DialogueManager : MonoBehaviour
 
         CanvasBox.SetActive(true); // open the dialogue box
 
-        // isOpen = true;
+        isOpen = true;
         inputStream = dialogue; // store the dialogue from dialogue trigger
         PrintDialogue(); // Prints out the first line of dialogue
     }
@@ -143,6 +157,7 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
+    // need to fix asap
     public void PrintDecision(bool isYesOption)
     {
         isQuestion = false;
@@ -176,7 +191,7 @@ public class DialogueManager : MonoBehaviour
         NameText.text = "";
         inputStream.Clear();
         CanvasBox.SetActive(false);
-        // isOpen = false;
+        isOpen = false;
         if (freezePlayerOnDialogue)
         {
             EnablePlayerController();

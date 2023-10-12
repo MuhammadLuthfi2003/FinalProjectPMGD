@@ -28,3 +28,4 @@ You need 2 things really.
 With these you could probably make a system to handle elementary branching dialouge.
 
 Too much branching dialogue could be a headache for this system, if you think this is necessary for your game, you'll definitely want to develop a more modular system..
+EndQueue
