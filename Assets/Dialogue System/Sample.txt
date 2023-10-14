@@ -17,8 +17,11 @@ Of course, if you wanted nonlinear dialogue, you would need a way to implement p
 [CHOICE=N]NO
 
 {Y} Well you're in luck, that's what we're doing here!
+{Y} i will explain it all to you
 
 {N} Ah, well you can really do a number of things, but I'll tell you my way.
+{N} allow me to elaborate further
+[ENDCHOICE]
 
 You need 2 things really.
 

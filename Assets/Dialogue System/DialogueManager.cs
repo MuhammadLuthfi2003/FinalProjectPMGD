@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
-using static System.Net.Mime.MediaTypeNames;
+// using static System.Net.Mime.MediaTypeNames;
 
 /********************
  * DIALOGUE MANAGER *
@@ -27,13 +27,15 @@ public class DialogueManager : MonoBehaviour
     
 
     public bool freezePlayerOnDialogue = true;
-
+    public DialogueTrigger currentInteractableObject;
 
     public bool isOpen; // represents if the dialogue box is open or closed
 
     private Queue<string> inputStream = new Queue<string>(); // stores dialogue
     public bool isQuestion = false;
     private int optionRemaining = 0;
+    public bool lastOptionChosen = false;
+    public bool isAnsweringQuestion = false;
     //private PlayerAnimController animController;
 
     private void Awake()
@@ -97,7 +99,14 @@ public class DialogueManager : MonoBehaviour
 
     public void AdvanceDialogue() // call when a player presses a button in Dialogue Trigger
     {
-        PrintDialogue();
+        if (isAnsweringQuestion)
+        {
+            RespondAnswer();
+        }
+        else
+        {
+            PrintDialogue();
+        }
     }
 
     private void PrintDialogue()
@@ -125,10 +134,6 @@ public class DialogueManager : MonoBehaviour
             {
                 isQuestion = true;
                 SetOptions();
-            }
-            else if (inputStream.Peek().Contains("{Y}") || inputStream.Peek().Contains("{N}"))
-            {
-                inputStream.Dequeue();
             }
             else
             {
@@ -160,16 +165,34 @@ public class DialogueManager : MonoBehaviour
     // need to fix asap
     public void PrintDecision(bool isYesOption)
     {
+        currentInteractableObject.hasChosenOption = true;
+        currentInteractableObject.chosenDecision = isYesOption;
         isQuestion = false;
+        lastOptionChosen = isYesOption;
+        isAnsweringQuestion = true;
+        AdvanceDialogue();
+    }
 
-        if (isYesOption)
+    private void RespondAnswer() // function to display answer
+    {
+        if (lastOptionChosen)
         {
             if (inputStream.Peek().Contains("{Y}"))
             {
                 string text = inputStream.Peek();
                 text = inputStream.Dequeue().Substring(text.IndexOf("}") + 1).ToString();
                 TextBox.text = text;
-                PrintDialogue();
+            }
+            else if (inputStream.Peek().Contains("{N}"))
+            {
+                inputStream.Dequeue();
+                RespondAnswer();
+            }
+            else if (inputStream.Peek().Contains("[ENDCHOICE]"))
+            {
+                isAnsweringQuestion = false;
+                inputStream.Dequeue();
+                AdvanceDialogue();
             }
         }
         else
@@ -179,10 +202,19 @@ public class DialogueManager : MonoBehaviour
                 string text = inputStream.Peek();
                 text = inputStream.Dequeue().Substring(text.IndexOf("}") + 1).ToString();
                 TextBox.text = text;
-                PrintDialogue();
+            }
+            else if (inputStream.Peek().Contains("{Y}"))
+            {
+                inputStream.Dequeue();
+                RespondAnswer();
+            }
+            else if (inputStream.Peek().Contains("[ENDCHOICE]"))
+            {
+                isAnsweringQuestion = false;
+                inputStream.Dequeue();
+                AdvanceDialogue();
             }
         }
-        
     }
 
     public void EndDialogue()

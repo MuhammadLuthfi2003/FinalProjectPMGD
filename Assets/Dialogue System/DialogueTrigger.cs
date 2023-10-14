@@ -15,10 +15,16 @@ using TMPro;
 
 public class DialogueTrigger : MonoBehaviour
 {
+    [Header("General Settings")]
     public TextAsset TextFileAsset; // your imported text file for your NPC
     public bool TriggerWithButton;
     public GameObject indicator;
     public TextMeshPro displayText; // found in npc
+
+    [Header("After Decision Dialogue and Reinteraction")]
+    public bool changeDialogAfterOptions = false;
+    public TextAsset trueOptionDialog;
+    public TextAsset falseOptionDialog;
     
 
     // public Vector3 optionalIndicatorOffset = new Vector3 (0,0,0);
@@ -30,6 +36,8 @@ public class DialogueTrigger : MonoBehaviour
 
     private bool isNear = false;
     private DialogueManager dialogueManager;
+    [HideInInspector] public bool hasChosenOption = false;
+    [HideInInspector] public bool chosenDecision = false;
     //private GameObject indicator;
 
     // public bool useCollision; // unused for now
@@ -72,6 +80,18 @@ public class DialogueTrigger : MonoBehaviour
     {
         string txt = TextFileAsset.text;
 
+        if (changeDialogAfterOptions && hasChosenOption)
+        {
+            if (chosenDecision)
+            {
+                txt = trueOptionDialog.text;
+            }
+            else
+            {
+                txt = falseOptionDialog.text;
+            }
+        }
+
         string[] lines = txt.Split(System.Environment.NewLine.ToCharArray()); // Split dialogue lines by newline
 
         foreach (string line in lines) // for every line of dialogue
@@ -107,6 +127,7 @@ public class DialogueTrigger : MonoBehaviour
             isNear = true;
             if (!TriggerWithButton)
             {
+                DialogueManager.instance.currentInteractableObject = this;
                 TriggerDialogue();
             }
             // Debug.Log("Collision");
@@ -145,7 +166,7 @@ public class DialogueTrigger : MonoBehaviour
             else
             {
                 nextTime = Time.timeSinceLevelLoad + waitTime;
-                FindObjectOfType<DialogueManager>().AdvanceDialogue();
+                DialogueManager.instance.AdvanceDialogue();
             }
         }
     }
@@ -155,8 +176,9 @@ public class DialogueTrigger : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             isNear = false;
+            DialogueManager.instance.currentInteractableObject = null;
             firstDialogFlag = true;
-            FindObjectOfType<DialogueManager>().EndDialogue();
+            DialogueManager.instance.EndDialogue();
             dialogueTiggered = false;
 
             if (indicator != null && indicator.activeSelf == true)
