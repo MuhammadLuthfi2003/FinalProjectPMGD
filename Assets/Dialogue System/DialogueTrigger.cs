@@ -70,6 +70,7 @@ public class DialogueTrigger : MonoBehaviour
     /* Called when you want to start dialogue */
     void TriggerDialogue()
     {
+        DialogueManager.instance.currentInteractableObject = this;
         ReadTextFile(); // loads in the text file
         dialogueManager = DialogueManager.instance; // gets the dialogue manager
         dialogueManager.StartDialogue(dialogue); // Accesses Dialogue Manager and Starts Dialogue
@@ -127,7 +128,6 @@ public class DialogueTrigger : MonoBehaviour
             isNear = true;
             if (!TriggerWithButton)
             {
-                DialogueManager.instance.currentInteractableObject = this;
                 TriggerDialogue();
             }
             // Debug.Log("Collision");
