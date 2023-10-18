@@ -10,6 +10,7 @@ public class Apple : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             collision.GetComponent<Health>().Heal(1);
+            Destroy(gameObject);
         }
     }
 }
