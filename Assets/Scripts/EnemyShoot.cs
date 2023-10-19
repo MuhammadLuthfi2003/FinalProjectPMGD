@@ -51,8 +51,6 @@ public class EnemyShoot : MonoBehaviour
 
     public void Shoot()
     {
-
-
         if (shootTimer >= shootInterval)
         {
             if (useEnemyPatrol)

@@ -1,0 +1,57 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class MainMenuManager : MonoBehaviour
+{
+    [Header("Main Menu Panels")]
+    [SerializeField] GameObject mainMenuPanel;
+    [SerializeField] GameObject optionsPanel;
+    [SerializeField] GameObject creditsPanel;
+    [SerializeField] GameObject levelSelectPanel;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        optionsPanel.SetActive(false);
+        creditsPanel.SetActive(false);
+        levelSelectPanel.SetActive(false);
+    }
+
+    public void openOptions()
+    {
+        optionsPanel.SetActive(true);
+        mainMenuPanel.SetActive(false);
+    }
+
+    public void openCredits()
+    {
+        creditsPanel.SetActive(true);
+        mainMenuPanel.SetActive(false);
+    }
+
+    public void openLevelSelect()
+    {
+        levelSelectPanel.SetActive(true);
+        mainMenuPanel.SetActive(false);
+    }
+
+    public void Back()
+    {
+        creditsPanel.SetActive(false);
+        optionsPanel.SetActive(false);
+        levelSelectPanel.SetActive(false);
+        mainMenuPanel.SetActive(true);
+    }
+
+    public void LoadLevel(int level)
+    {
+        SceneManager.LoadScene(level);
+    }
+
+    public void Quit()
+    {
+        Application.Quit();
+    }
+}
