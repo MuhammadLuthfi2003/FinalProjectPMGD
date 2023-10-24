@@ -26,7 +26,7 @@ Of course, if you wanted nonlinear dialogue, you would need a way to implement p
 You need 2 things really.
 
 1) You need a way to mark choices.
-2) You need a way to mark the next line of dialogue to say.
+2) You need a way to mark the next line of dialogue to say..
 
 With these you could probably make a system to handle elementary branching dialouge.
 
