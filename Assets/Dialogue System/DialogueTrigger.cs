@@ -20,12 +20,22 @@ public class DialogueTrigger : MonoBehaviour
     public bool TriggerWithButton;
     public GameObject indicator;
     public TextMeshPro displayText; // found in npc
+    public bool isFreezePlayer = false;
 
     [Header("After Decision Dialogue and Reinteraction")]
     public bool changeDialogAfterOptions = false;
     public TextAsset trueOptionDialog;
     public TextAsset falseOptionDialog;
-    
+    public bool canInteractAgain = true;
+
+    [Header("Event when player has entered the trigger")]
+    public UnityEngine.Events.UnityEvent onEnterEvent;
+
+    [Header("Event when player has progressed the dialogue")]
+    public UnityEngine.Events.UnityEvent onEventProgress;
+
+    [Header("Event when player has exited the trigger")]
+    public UnityEngine.Events.UnityEvent onExitEvent;
 
     // public Vector3 optionalIndicatorOffset = new Vector3 (0,0,0);
     private Queue<string> dialogue = new Queue<string>(); // stores the dialogue (Great Performance!)
@@ -34,10 +44,12 @@ public class DialogueTrigger : MonoBehaviour
     private bool dialogueTiggered;
     private bool firstDialogFlag = true;
 
+
     private bool isNear = false;
     private DialogueManager dialogueManager;
     [HideInInspector] public bool hasChosenOption = false;
     [HideInInspector] public bool chosenDecision = false;
+    [HideInInspector] public bool hasExited = false;
     //private GameObject indicator;
 
     // public bool useCollision; // unused for now
@@ -45,31 +57,58 @@ public class DialogueTrigger : MonoBehaviour
 
     private void Update()
     {
-        if (isNear)
+        if (canInteractAgain)
         {
-            if (TriggerWithButton && firstDialogFlag)
+            if (isNear)
             {
-                displayText.enabled = true;
-
-                if (Input.GetKeyDown(KeyCode.F))
+                if (TriggerWithButton && firstDialogFlag)
                 {
-                    TriggerDialogue();
-                    firstDialogFlag = false;
-                    displayText.enabled = false;
-                }
-            }
+                    displayText.enabled = true;
 
-            OutputLine();
+                    if (Input.GetKeyDown(KeyCode.F))
+                    {
+                        TriggerDialogue();
+                        firstDialogFlag = false;
+                        displayText.enabled = false;
+                    }
+                }
+
+                OutputLine();
+            }
+            if (!isNear)
+            {
+                displayText.enabled = false;
+            }
         }
-        if (!isNear)
+        else
         {
-            displayText.enabled = false;
+            if (isNear)
+            {
+                if (TriggerWithButton && firstDialogFlag && !hasExited)
+                {
+                    displayText.enabled = true;
+
+                    if (Input.GetKeyDown(KeyCode.F))
+                    {
+                        TriggerDialogue();
+                        firstDialogFlag = false;
+                        displayText.enabled = false;
+                    }
+                }
+
+                OutputLine();
+            }
+            if (!isNear)
+            {
+                displayText.enabled = false;
+            }
         }
     }
 
     /* Called when you want to start dialogue */
     void TriggerDialogue()
     {
+        onEnterEvent.Invoke();
         DialogueManager.instance.currentInteractableObject = this;
         ReadTextFile(); // loads in the text file
         dialogueManager = DialogueManager.instance; // gets the dialogue manager
@@ -180,7 +219,7 @@ public class DialogueTrigger : MonoBehaviour
             firstDialogFlag = true;
             DialogueManager.instance.EndDialogue();
             dialogueTiggered = false;
-
+            onExitEvent.Invoke();
             if (indicator != null && indicator.activeSelf == true)
             {
                 indicator.SetActive(false);

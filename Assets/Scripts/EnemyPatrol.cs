@@ -14,7 +14,7 @@ public class EnemyPatrol : MonoBehaviour
     private Transform currentPatrolPoint;
     [HideInInspector]
     public bool isFacingRight = true;
-    [HideInInspector]
+    //[HideInInspector]
     public bool isMoving = true;
 
     private SpriteRenderer spriteRenderer;
@@ -55,22 +55,56 @@ public class EnemyPatrol : MonoBehaviour
         if (isMoving)
         {
             transform.position = Vector2.MoveTowards(transform.position, currentPatrolPoint.position, speed * Time.deltaTime);
+
+            if (transform.position.x <= pointLeft.position.x) // if the enemy is at the left point
+            {
+                isFacingRight = true;
+                currentPatrolPoint = pointRight;
+
+
+            }
+            else if (transform.position.x >= pointRight.position.x) // if enemy is at the right point
+            {
+                isFacingRight = false;
+                currentPatrolPoint = pointLeft;
+
+
+            }
         }
 
-
-        if (transform.position.x <= pointLeft.position.x + 2f)
+        if (isFacingRight)
         {
-            currentPatrolPoint = pointRight;
-            isFacingRight = true;
             spriteRenderer.flipX = false;
+
+            if (currentPatrolPoint != pointRight)
+            {
+                currentPatrolPoint = pointRight;
+            }
         }
-        else if (transform.position.x >= pointRight.position.x - 2f)
+        else if (!isFacingRight)
         {
-            currentPatrolPoint = pointLeft;
-            isFacingRight = false;
             spriteRenderer.flipX = true;
+
+            if (currentPatrolPoint != pointLeft)
+            {
+                currentPatrolPoint = pointLeft;
+            }
         }
 
 
     }
+
+    public void TogglecurrentPatrolPoint()
+    {
+        isMoving = true; 
+        if (currentPatrolPoint == pointLeft)
+        {
+            currentPatrolPoint = pointRight;
+        }
+        else
+        {
+            currentPatrolPoint = pointLeft;
+        }
+    }
+
 }

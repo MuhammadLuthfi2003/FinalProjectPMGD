@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
@@ -72,22 +73,22 @@ public class DialogueManager : MonoBehaviour
 
     private void DisablePlayerController()
     {
-        // todo : add function to make player idle
-        //animController.ForceIdle();
-        //animController.enabled = false;
+        GameManager.Instance.player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePosition;
     }
 
     private void EnablePlayerController()
     {
-        // todo : add line to reenable player animator
-        //animController.enabled = true;
+        GameManager.Instance.player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
     }
 
     public void StartDialogue(Queue<string> dialogue)
     {
-        if (freezePlayerOnDialogue)
+        if (currentInteractableObject != null)
         {
-            DisablePlayerController();
+            if (currentInteractableObject.isFreezePlayer)
+            {
+                DisablePlayerController();
+            }
         }
 
         CanvasBox.SetActive(true); // open the dialogue box
@@ -99,6 +100,10 @@ public class DialogueManager : MonoBehaviour
 
     public void AdvanceDialogue() // call when a player presses a button in Dialogue Trigger
     {
+        if (currentInteractableObject != null)
+        {
+            currentInteractableObject.onEventProgress.Invoke();
+        }
         if (isAnsweringQuestion)
         {
             RespondAnswer();
@@ -121,6 +126,16 @@ public class DialogueManager : MonoBehaviour
             if (inputStream.Count == 0 || inputStream.Peek().Contains("EndQueue")) // special phrase to stop dialogue
             {
                 inputStream.Dequeue(); // Clear Queue
+
+                if (currentInteractableObject != null)
+                {
+                    if (!currentInteractableObject.canInteractAgain)
+                    {
+                        Destroy(currentInteractableObject.gameObject);
+                        EnablePlayerController();
+                    }
+                }
+
                 EndDialogue();
             }
             else if (inputStream.Peek().Contains("[NAME="))
@@ -224,9 +239,13 @@ public class DialogueManager : MonoBehaviour
         inputStream.Clear();
         CanvasBox.SetActive(false);
         isOpen = false;
-        if (freezePlayerOnDialogue)
+        if (currentInteractableObject != null)
         {
-            EnablePlayerController();
+            if (currentInteractableObject.isFreezePlayer)
+            {
+                EnablePlayerController();
+            }
+            currentInteractableObject.onExitEvent.Invoke();
         }
     }
 

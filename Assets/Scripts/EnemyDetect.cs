@@ -28,6 +28,9 @@ public class EnemyDetect : MonoBehaviour
     [Header("Event when it detects the player")]
     public UnityEvent OnFoundPlayer;
 
+    [Header("Event when it doesnt detect the player")]
+    public UnityEvent OnPlayerNotFound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -49,10 +52,7 @@ public class EnemyDetect : MonoBehaviour
                     enemyPatrol.isMoving = false;
                 }
             }
-            if (player.GetComponent<PlayerHide>().isHiding)
-            {
-                enemyPatrol.isMoving = true;
-            }
+
         }
         else
         {
@@ -60,6 +60,8 @@ public class EnemyDetect : MonoBehaviour
             {
                 enemyPatrol.isMoving = true;
             }
+            OnPlayerNotFound.Invoke();
+
         }
 
     }
@@ -123,10 +125,18 @@ new Vector3(collider.bounds.size.x * attackRange, collider.bounds.size.y, collid
             if (!player.GetComponent<PlayerHide>().isHiding && hit.collider.CompareTag("Player"))
             {
                 isDetectingPlayer = true;
+                if (useEnemyPatrol)
+                {
+                    enemyPatrol.isMoving = false;
+                }
             }
             else
             {
                 isDetectingPlayer = false;
+                if (useEnemyPatrol)
+                {
+                    enemyPatrol.isMoving = true;
+                }
             }
         }
 
