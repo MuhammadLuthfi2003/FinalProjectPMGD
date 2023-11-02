@@ -125,18 +125,10 @@ new Vector3(collider.bounds.size.x * attackRange, collider.bounds.size.y, collid
             if (!player.GetComponent<PlayerHide>().isHiding && hit.collider.CompareTag("Player"))
             {
                 isDetectingPlayer = true;
-                if (useEnemyPatrol)
-                {
-                    enemyPatrol.isMoving = false;
-                }
             }
             else
             {
                 isDetectingPlayer = false;
-                if (useEnemyPatrol)
-                {
-                    enemyPatrol.isMoving = true;
-                }
             }
         }
 

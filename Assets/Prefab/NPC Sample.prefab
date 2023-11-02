@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4990365543978262546}
   - component: {fileID: 5390292275824607409}
   - component: {fileID: 6861309666955854799}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: indicator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -184,7 +184,7 @@ GameObject:
   - component: {fileID: 2746383657276798476}
   - component: {fileID: 2746383657276798473}
   - component: {fileID: 2746383657276798478}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: NPC Sample
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -301,3 +301,20 @@ MonoBehaviour:
   TriggerWithButton: 1
   indicator: {fileID: 170181346139881797}
   displayText: {fileID: 6861309666955854799}
+  isFreezePlayer: 0
+  changeDialogAfterOptions: 0
+  trueOptionDialog: {fileID: 0}
+  falseOptionDialog: {fileID: 0}
+  canInteractAgain: 1
+  onEnterEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onEventProgress:
+    m_PersistentCalls:
+      m_Calls: []
+  onExitEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  hasChosenOption: 0
+  chosenDecision: 0
+  hasExited: 0

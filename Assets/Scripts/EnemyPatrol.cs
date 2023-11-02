@@ -5,13 +5,14 @@ using UnityEngine;
 public class EnemyPatrol : MonoBehaviour
 {
     [Header("Patrol Points")]
-    public Transform pointLeft;
-    public Transform pointRight;
+    public float movementRange;
+    private Vector3 pointLeft;
+    private Vector3 pointRight;
 
     [Header("Movement")]
     [SerializeField] public float speed;
 
-    private Transform currentPatrolPoint;
+    private Vector3 currentPatrolPoint;
     [HideInInspector]
     public bool isFacingRight = true;
     //[HideInInspector]
@@ -25,6 +26,16 @@ public class EnemyPatrol : MonoBehaviour
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        SetPatrolPoint(transform.position);
+    }
+
+    public void SetPatrolPoint(Vector3 newPos)
+    {
+        currentPatrolPoint = newPos;
+        pointLeft = new Vector3(transform.position.x - movementRange, transform.position.y, transform.position.z);
+        pointRight = new Vector3(transform.position.x + movementRange, transform.position.y, transform.position.z);
+
+        spriteRenderer = GetComponent<SpriteRenderer>();
 
         int randomNum = Random.Range(0, 1);
 
@@ -37,7 +48,7 @@ public class EnemyPatrol : MonoBehaviour
             currentPatrolPoint = pointRight;
         }
 
-        if (transform.position.x < currentPatrolPoint.position.x)
+        if (transform.position.x < currentPatrolPoint.x)
         {
             isFacingRight = true;
         }
@@ -46,7 +57,6 @@ public class EnemyPatrol : MonoBehaviour
             isFacingRight = false;
             spriteRenderer.flipX = true;
         }
-
     }
 
     // Update is called once per frame
@@ -54,16 +64,16 @@ public class EnemyPatrol : MonoBehaviour
     {
         if (isMoving)
         {
-            transform.position = Vector2.MoveTowards(transform.position, currentPatrolPoint.position, speed * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, currentPatrolPoint, speed * Time.deltaTime);
 
-            if (transform.position.x <= pointLeft.position.x) // if the enemy is at the left point
+            if (transform.position.x <= pointLeft.x) // if the enemy is at the left point
             {
                 isFacingRight = true;
                 currentPatrolPoint = pointRight;
 
 
             }
-            else if (transform.position.x >= pointRight.position.x) // if enemy is at the right point
+            else if (transform.position.x >= pointRight.x) // if enemy is at the right point
             {
                 isFacingRight = false;
                 currentPatrolPoint = pointLeft;
