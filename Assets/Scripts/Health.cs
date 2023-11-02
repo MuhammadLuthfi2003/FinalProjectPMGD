@@ -14,6 +14,18 @@ public class Health : MonoBehaviour
     [Header("Event health reaches 0")]
     public UnityEvent OnLifeReachedZero;
 
+    private void Start()
+    {
+        if (useScriptableHealth)
+        {
+            healthScriptable.value = maxHealth;
+        }
+        else
+        {
+            health = maxHealth;
+        }
+    }
+
     public void TakeDamage(int damage)
     {
         if (useScriptableHealth)
