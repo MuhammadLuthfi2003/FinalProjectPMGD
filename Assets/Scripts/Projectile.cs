@@ -13,6 +13,7 @@ public class Projectile : MonoBehaviour
     {
         if (collision.CompareTag(tagToHit))
         {
+            if (tagToHit == "Player" && (collision.GetComponent<PlayerHide>().isHiding || collision.GetComponent<PlayerHide>().isInvincible)) return;
             collision.GetComponent<Health>().TakeDamage(damage);
             Destroy(gameObject);
         }

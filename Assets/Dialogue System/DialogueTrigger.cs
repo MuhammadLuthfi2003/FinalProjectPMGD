@@ -3,6 +3,7 @@ using System.IO;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEditor.Build.Content;
 
 /********************
  * DIALOGUE TRIGGER *
@@ -108,8 +109,10 @@ public class DialogueTrigger : MonoBehaviour
     /* Called when you want to start dialogue */
     void TriggerDialogue()
     {
+        if (GameManager.Instance.GetComponent<Health>().isDead) return;
         onEnterEvent.Invoke();
         DialogueManager.instance.currentInteractableObject = this;
+        GameManager.Instance.player.GetComponent<PlayerHide>().isInvincible = true;
         ReadTextFile(); // loads in the text file
         dialogueManager = DialogueManager.instance; // gets the dialogue manager
         dialogueManager.StartDialogue(dialogue); // Accesses Dialogue Manager and Starts Dialogue
@@ -216,6 +219,7 @@ public class DialogueTrigger : MonoBehaviour
         {
             isNear = false;
             DialogueManager.instance.currentInteractableObject = null;
+            GameManager.Instance.player.GetComponent<PlayerHide>().isInvincible = false;
             firstDialogFlag = true;
             DialogueManager.instance.EndDialogue();
             dialogueTiggered = false;

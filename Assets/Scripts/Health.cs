@@ -11,6 +11,8 @@ public class Health : MonoBehaviour
     public int health = 3;
     public int maxHealth = 3;
 
+    public bool isDead = false;
+
     [Header("Event health reaches 0")]
     public UnityEvent OnLifeReachedZero;
 
@@ -28,6 +30,7 @@ public class Health : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        if (isDead) return;
         if (useScriptableHealth)
         {
             healthScriptable.value -= damage;
@@ -35,6 +38,7 @@ public class Health : MonoBehaviour
             if (healthScriptable.value <= 0)
             {
                 OnLifeReachedZero.Invoke();
+                isDead = true;
             }
 
             return;
@@ -45,6 +49,7 @@ public class Health : MonoBehaviour
         if (health <= 0)
         {
             OnLifeReachedZero.Invoke();
+            isDead = true;
         }
     }
 

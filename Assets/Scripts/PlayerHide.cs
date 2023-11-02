@@ -12,6 +12,7 @@ public class PlayerHide : MonoBehaviour
 
     bool canHide = false;
     public bool isHiding = false;
+    public bool isInvincible = false;
 
     private SpriteRenderer sprite;
     private Color32 originalColor;

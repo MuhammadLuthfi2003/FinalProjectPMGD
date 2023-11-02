@@ -31,10 +31,13 @@ public class EnemyDetect : MonoBehaviour
     [Header("Event when it doesnt detect the player")]
     public UnityEvent OnPlayerNotFound;
 
+    private PlayerHide playerHide;
+
     // Start is called before the first frame update
     void Start()
     {
         player = GameManager.Instance.player;
+        playerHide = player.GetComponent<PlayerHide>();
     }
 
     // Update is called once per frame
@@ -101,7 +104,7 @@ new Vector3(collider.bounds.size.x * attackRange, collider.bounds.size.y, collid
         if (hit.collider != null)
         {
 
-            if (!player.GetComponent<PlayerHide>().isHiding && hit.collider.CompareTag("Player"))
+            if ((!playerHide.isHiding && !playerHide.isInvincible) && hit.collider.CompareTag("Player") && !player.GetComponent<Health>().isDead)
             {
                 isDetectingPlayer = true;
             }
@@ -122,7 +125,7 @@ new Vector3(collider.bounds.size.x * attackRange, collider.bounds.size.y, collid
 
         if (hit.collider != null)
         {
-            if (!player.GetComponent<PlayerHide>().isHiding && hit.collider.CompareTag("Player"))
+            if ((!playerHide.isHiding && !playerHide.isInvincible) && hit.collider.CompareTag("Player") && !player.GetComponent<Health>().isDead)
             {
                 isDetectingPlayer = true;
             }
