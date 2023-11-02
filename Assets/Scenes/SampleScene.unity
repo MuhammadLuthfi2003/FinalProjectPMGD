@@ -2477,6 +2477,26 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2746383657276798473, guid: 2182af32d321f4247b573d8017eefe04, type: 3}
+      propertyPath: m_Size.x
+      value: 1.6522251
+      objectReference: {fileID: 0}
+    - target: {fileID: 2746383657276798473, guid: 2182af32d321f4247b573d8017eefe04, type: 3}
+      propertyPath: m_Size.y
+      value: 1.6442729
+      objectReference: {fileID: 0}
+    - target: {fileID: 2746383657276798473, guid: 2182af32d321f4247b573d8017eefe04, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.32611257
+      objectReference: {fileID: 0}
+    - target: {fileID: 2746383657276798473, guid: 2182af32d321f4247b573d8017eefe04, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.32213658
+      objectReference: {fileID: 0}
+    - target: {fileID: 2746383657276798476, guid: 2182af32d321f4247b573d8017eefe04, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2746383657276798477, guid: 2182af32d321f4247b573d8017eefe04, type: 3}
       propertyPath: m_Name
       value: NPC Sample (1)
@@ -3746,7 +3766,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1192076939}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 611293002}
+        m_TargetAssemblyTypeName: GameOverScript, Assembly-CSharp
+        m_MethodName: RestartGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1192076939
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5726,7 +5758,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1816070850}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 611293002}
+        m_TargetAssemblyTypeName: GameOverScript, Assembly-CSharp
+        m_MethodName: ToMainMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1816070850
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6906,33 +6950,9 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 5101760907086590546, guid: 334668bc55cf17548b6f79f1b5d3c714, type: 3}
-      propertyPath: OnLifeReachedZero.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5101760907086590546, guid: 334668bc55cf17548b6f79f1b5d3c714, type: 3}
-      propertyPath: OnLifeReachedZero.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5101760907086590546, guid: 334668bc55cf17548b6f79f1b5d3c714, type: 3}
       propertyPath: OnLifeReachedZero.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 611293002}
-    - target: {fileID: 5101760907086590546, guid: 334668bc55cf17548b6f79f1b5d3c714, type: 3}
-      propertyPath: OnLifeReachedZero.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5101760907086590546, guid: 334668bc55cf17548b6f79f1b5d3c714, type: 3}
-      propertyPath: OnLifeReachedZero.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ShowGameOver
-      objectReference: {fileID: 0}
-    - target: {fileID: 5101760907086590546, guid: 334668bc55cf17548b6f79f1b5d3c714, type: 3}
-      propertyPath: OnLifeReachedZero.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: GameOverScript, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 5101760907086590546, guid: 334668bc55cf17548b6f79f1b5d3c714, type: 3}
-      propertyPath: OnLifeReachedZero.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 5101760907086590549, guid: 334668bc55cf17548b6f79f1b5d3c714, type: 3}
       propertyPath: m_RootOrder
       value: 4
