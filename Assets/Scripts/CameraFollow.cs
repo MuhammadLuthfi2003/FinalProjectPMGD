@@ -17,7 +17,7 @@ public class CameraFollow : MonoBehaviour
     private Transform followTransform;
 
     private float xMin, xMax, yMin, yMax;
-    private float camViewXMin;
+    private float camViewXMin, camViewXMax;
     private float camX, camY;
     private Vector3 smoothPos;
 
@@ -39,7 +39,7 @@ public class CameraFollow : MonoBehaviour
     private void Update()
     {
         camViewXMin = CameraViewArea.bounds.min.x;
-
+        camViewXMax = CameraViewArea.bounds.max.x;
     }
 
     private void FixedUpdate()
@@ -53,7 +53,7 @@ public class CameraFollow : MonoBehaviour
 
 
             camX = Mathf.Clamp(followTransform.position.x + xOffset, currentplayerX, xMax);
-            float limitedXPlayerPos = Mathf.Clamp(player.transform.position.x, camViewXMin, xMax);
+            float limitedXPlayerPos = Mathf.Clamp(player.transform.position.x, camViewXMin, camViewXMax);
             player.transform.position = new Vector3(limitedXPlayerPos, player.transform.position.y, player.transform.position.z);
             camY = Mathf.Clamp(followTransform.position.y + yOffset, yMin, yMax);
             smoothPos = Vector3.Lerp(this.transform.position, new Vector3(camX, camY, this.transform.position.z), smoothSpeed);
@@ -64,6 +64,14 @@ public class CameraFollow : MonoBehaviour
             camY = Mathf.Clamp(followTransform.position.y + yOffset, yMin, yMax);
             camX = Mathf.Clamp(followTransform.position.x + xOffset, xMin, xMax);
             smoothPos = Vector3.Lerp(this.transform.position, new Vector3(camX, camY, this.transform.position.z), smoothSpeed);
+
+            if (GameManager.Instance.player.transform.position.x < camViewXMin || GameManager.Instance.player.transform.position.x > camViewXMax)
+            {
+                float limitedXPlayerPos = Mathf.Clamp(player.transform.position.x, camViewXMin, camViewXMax);
+                player.transform.position = new Vector3(limitedXPlayerPos, player.transform.position.y, player.transform.position.z);
+            }
+           
+
             this.transform.position = smoothPos;
         }
 

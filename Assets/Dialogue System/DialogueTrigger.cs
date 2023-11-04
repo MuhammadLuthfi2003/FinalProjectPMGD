@@ -109,7 +109,7 @@ public class DialogueTrigger : MonoBehaviour
     /* Called when you want to start dialogue */
     void TriggerDialogue()
     {
-        if (GameManager.Instance.GetComponent<Health>().isDead) return;
+        if (GameManager.Instance.player.GetComponent<Health>().isDead) return;
         onEnterEvent.Invoke();
         DialogueManager.instance.currentInteractableObject = this;
         GameManager.Instance.player.GetComponent<PlayerHide>().isInvincible = true;

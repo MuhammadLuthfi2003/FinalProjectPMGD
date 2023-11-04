@@ -29,18 +29,29 @@ public class PlayerHide : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(hideButton) && canHide)
+        if (Input.GetKeyDown(hideButton) && canHide)
         {
-            isHiding = true;
-            sprite.color = hideColor;
-            sprite.sortingOrder = hideLayer;
+            if (!isHiding)
+            {
+                isHiding = true;
+                sprite.color = hideColor;
+                sprite.sortingOrder = hideLayer;
+            }
+            else
+            {
+                isHiding = false;
+                sprite.color = originalColor;
+                sprite.sortingOrder = originalLayer;
+            }
         }
-        else
+
+        if (!canHide)
         {
             isHiding = false;
             sprite.color = originalColor;
             sprite.sortingOrder = originalLayer;
         }
+
     }
 
 

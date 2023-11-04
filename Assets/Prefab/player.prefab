@@ -163,6 +163,7 @@ MonoBehaviour:
   hideButton: 101
   hideLayer: 0
   isHiding: 0
+  isInvincible: 0
 --- !u!114 &5101760907086590546
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,6 +180,7 @@ MonoBehaviour:
   healthScriptable: {fileID: 11400000, guid: 988523f4835e09f4797b2878b252f0ef, type: 2}
   health: 3
   maxHealth: 3
+  isDead: 0
   OnLifeReachedZero:
     m_PersistentCalls:
       m_Calls:
