@@ -12,6 +12,9 @@ public class DialogueUI_Prologue : MonoBehaviour {
        
     private TypewriterEffect typewriterEffect;
 
+    [Header("Scene")]
+    [SerializeField] private int SceneInput;
+
     public bool IsOpen { get; private set; }
 
     //[Header("Audio Text")]
@@ -46,7 +49,8 @@ public class DialogueUI_Prologue : MonoBehaviour {
         }
         
         //ac.Stop();
-        CloseDialogueBox();        
+        CloseDialogueBox();
+        Application.LoadLevel(SceneInput);
 
     }
 

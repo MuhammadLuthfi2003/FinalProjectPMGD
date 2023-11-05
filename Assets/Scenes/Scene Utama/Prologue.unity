@@ -431,7 +431,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: a027f62621622354e954f887df7372cd, type: 3}
+  m_audioClip: {fileID: 8300000, guid: b4f9553c83c05304e81bd6f0e0d61916, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -1073,3 +1073,4 @@ MonoBehaviour:
   dialogueBox: {fileID: 1419055598}
   textLabel: {fileID: 599663179}
   awakeDialogue: {fileID: 11400000, guid: f9938a37425ea944e8d922b237100fcf, type: 2}
+  SceneInput: 2
