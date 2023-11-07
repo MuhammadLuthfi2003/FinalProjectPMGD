@@ -10,6 +10,7 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] GameObject optionsPanel;
     [SerializeField] GameObject creditsPanel;
     [SerializeField] GameObject levelSelectPanel;
+    [SerializeField] GameObject exitConfirmationPanel;
 
     // Start is called before the first frame update
     void Start()
@@ -17,6 +18,7 @@ public class MainMenuManager : MonoBehaviour
         optionsPanel.SetActive(false);
         creditsPanel.SetActive(false);
         levelSelectPanel.SetActive(false);
+        exitConfirmationPanel.SetActive(false);
     }
 
     public void openOptions()
@@ -42,7 +44,14 @@ public class MainMenuManager : MonoBehaviour
         creditsPanel.SetActive(false);
         optionsPanel.SetActive(false);
         levelSelectPanel.SetActive(false);
+        exitConfirmationPanel.SetActive(false);
         mainMenuPanel.SetActive(true);
+    }
+
+    public void openExitConfirmation()
+    {
+        mainMenuPanel.SetActive(false);
+        exitConfirmationPanel.SetActive(true);
     }
 
     public void LoadLevel(int level)
