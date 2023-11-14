@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 [System.Serializable]
 public struct ButtonSliderData
@@ -15,7 +16,9 @@ public class ButtonSlider : MonoBehaviour
     // Start is called before the first frame update
     [Header("Slider Images")]
     [SerializeField] ButtonSliderData[] buttonSliderDatas;
-    [SerializeField] int defaultSliderIndex = 0;
+
+    [Header("Scriptable Float")]
+    [SerializeField] ScriptableFloat scriptableFloat;
 
     [Header("Event When Value Changes")]
     public UnityEvent onValueChange;
@@ -25,13 +28,33 @@ public class ButtonSlider : MonoBehaviour
     [HideInInspector]
     public float currentSliderValue = 0;
 
-    private SpriteRenderer sprite;
+    private Image image;
 
     void Start()
     {
-        sprite = GetComponent<SpriteRenderer>();
-        currentSliderIndex = defaultSliderIndex;
-        currentSliderValue = buttonSliderDatas[currentSliderIndex].value;
+        image = GetComponent<Image>();
+        
+        bool hasFound = false;
+
+        foreach (ButtonSliderData data in buttonSliderDatas)
+        {
+            if (data.value == scriptableFloat.value)
+            {
+                currentSliderValue = data.value;
+                hasFound = true;
+                break;
+            }
+            currentSliderIndex++;
+        }
+
+        if (!hasFound)
+        {
+            currentSliderIndex = Mathf.FloorToInt(buttonSliderDatas.Length / 2);
+            currentSliderValue = buttonSliderDatas[currentSliderIndex].value;
+            scriptableFloat.value = currentSliderValue;
+        }
+
+        setSprite(currentSliderIndex);
     }
 
     // Update is called once per frame
@@ -54,6 +77,7 @@ public class ButtonSlider : MonoBehaviour
         }
 
         setSprite(currentSliderIndex);
+        scriptableFloat.value = buttonSliderDatas[currentSliderIndex].value;
         onValueChange.Invoke();
     }
 
@@ -71,12 +95,13 @@ public class ButtonSlider : MonoBehaviour
         }
 
         setSprite(currentSliderIndex);
+        scriptableFloat.value = buttonSliderDatas[currentSliderIndex].value;
         onValueChange.Invoke();
     }
 
     public void setSprite(int index)
     {
-        sprite.sprite = buttonSliderDatas[index].sliderImage;
+        image.sprite = buttonSliderDatas[index].sliderImage;
     }
 
     public float GetCurrentValue()
