@@ -104,6 +104,11 @@ public class EnemyPatrol : MonoBehaviour
 
     }
 
+    public void ToggleIsMoving()
+    {
+        isMoving = !isMoving;
+    }
+
     public void TogglecurrentPatrolPoint()
     {
         isMoving = true; 

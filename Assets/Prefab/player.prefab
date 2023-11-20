@@ -161,7 +161,7 @@ MonoBehaviour:
     serializedVersion: 2
     rgba: 4287861651
   hideButton: 101
-  hideLayer: 0
+  hideLayer: 3
   isHiding: 0
   isInvincible: 0
 --- !u!114 &5101760907086590546

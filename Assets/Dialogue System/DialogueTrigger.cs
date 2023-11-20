@@ -19,7 +19,6 @@ public class DialogueTrigger : MonoBehaviour
     public TextAsset TextFileAsset; // your imported text file for your NPC
     public bool TriggerWithButton;
     public GameObject indicator;
-    public TextMeshPro displayText; // found in npc
     public bool isFreezePlayer = false;
 
     [Header("After Decision Dialogue and Reinteraction")]
@@ -63,13 +62,13 @@ public class DialogueTrigger : MonoBehaviour
             {
                 if (TriggerWithButton && firstDialogFlag)
                 {
-                    displayText.enabled = true;
+                    //displayText.enabled = true;
+                    indicator.SetActive(true);
 
                     if (Input.GetKeyDown(KeyCode.F))
                     {
                         TriggerDialogue();
                         firstDialogFlag = false;
-                        displayText.enabled = false;
                     }
                 }
 
@@ -77,7 +76,8 @@ public class DialogueTrigger : MonoBehaviour
             }
             if (!isNear)
             {
-                displayText.enabled = false;
+                //displayText.enabled = false;
+                indicator.SetActive(false);
             }
         }
         else
@@ -86,13 +86,15 @@ public class DialogueTrigger : MonoBehaviour
             {
                 if (TriggerWithButton && firstDialogFlag && !hasExited)
                 {
-                    displayText.enabled = true;
+                   // displayText.enabled = true;
+                   indicator.SetActive(true);
 
                     if (Input.GetKeyDown(KeyCode.F))
                     {
                         TriggerDialogue();
                         firstDialogFlag = false;
-                        displayText.enabled = false;
+                        // displayText.enabled = false;
+                        indicator.SetActive(false);
                     }
                 }
 
@@ -100,7 +102,8 @@ public class DialogueTrigger : MonoBehaviour
             }
             if (!isNear)
             {
-                displayText.enabled = false;
+                //displayText.enabled = false;
+                indicator.SetActive(false);
             }
         }
     }
@@ -179,13 +182,13 @@ public class DialogueTrigger : MonoBehaviour
         
         if (other.gameObject.tag == "Player")
         {
-            if (!dialogueTiggered)
-            {
-                if (indicator != null && indicator.activeSelf == false)
-                {
-                    indicator.SetActive(true);
-                }
-            }
+            //if (!dialogueTiggered)
+            //{
+            //    if (indicator != null && indicator.activeSelf == false)
+            //    {
+            //        indicator.SetActive(true);
+            //    }
+            //}
 
         }
     }
@@ -198,10 +201,10 @@ public class DialogueTrigger : MonoBehaviour
             {
                 TriggerDialogue();
                 dialogueTiggered = true;
-                if (indicator != null && indicator.activeSelf == true)
-                {
-                    indicator.SetActive(false);
-                }
+                //if (indicator != null && indicator.activeSelf == true)
+                //{
+                //    indicator.SetActive(false);
+                //}
                 nextTime = Time.timeSinceLevelLoad + waitTime;
             }
             else
@@ -223,10 +226,11 @@ public class DialogueTrigger : MonoBehaviour
             DialogueManager.instance.EndDialogue();
             dialogueTiggered = false;
             onExitEvent.Invoke();
-            if (indicator != null && indicator.activeSelf == true)
-            {
-                indicator.SetActive(false);
-            }
+            indicator.SetActive(false);
+            //if (indicator != null && indicator.activeSelf == true)
+            //{
+            //    indicator.SetActive(false);
+            //}
         }
     }
 }
