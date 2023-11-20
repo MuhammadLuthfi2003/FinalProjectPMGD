@@ -8005,11 +8005,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 114873481446907276, guid: 74cc90c9965222b45a1b281adb1e4e5e, type: 3}
       propertyPath: m_Size
-      value: 0.5598312
+      value: 0.49113232
       objectReference: {fileID: 0}
     - target: {fileID: 114873481446907276, guid: 74cc90c9965222b45a1b281adb1e4e5e, type: 3}
       propertyPath: m_Value
-      value: 0.00000015133759
+      value: 0.0000001309065
       objectReference: {fileID: 0}
     - target: {fileID: 114873481446907276, guid: 74cc90c9965222b45a1b281adb1e4e5e, type: 3}
       propertyPath: m_Direction
