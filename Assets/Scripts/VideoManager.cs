@@ -1,0 +1,108 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.UI;
+using UnityEngine.Video;
+
+[System.Serializable]
+public struct PlaylistItem
+{
+    public GameObject video;
+    public VideoPlayer videoPlayer;
+    public float time;
+    public bool isSkippable;
+}
+
+public class VideoManager : MonoBehaviour
+{
+    [SerializeField] private List<PlaylistItem> playlist;
+    [SerializeField] private Image transitionImg;
+    [SerializeField] private float transitionTime = 2f;
+
+    public UnityEvent OnAllVideoDone;
+
+    private int currentVideoIndex = 0;
+    private bool isTransitioning = false;
+    private float halfTransitionTime;
+    private float transitionTimer = 0f;
+    public float currentAlpha = 0f;
+
+    private bool hasAddedIndex = false;
+
+    private void Awake()
+    {
+        halfTransitionTime = transitionTime / 2f;
+
+        foreach (PlaylistItem item in playlist)
+        {
+            item.video.SetActive(false);
+        }
+
+        transitionImg.color = new Color(transitionImg.color.r, transitionImg.color.g, transitionImg.color.b, 0f);
+
+        StartCoroutine(PlayVideo(playlist[currentVideoIndex].time));
+    }
+
+    private void Update()
+    {
+        if (isTransitioning)
+        {
+            transitionTimer += Time.deltaTime;
+
+            if (transitionTimer < halfTransitionTime)
+            {
+                currentAlpha += Time.deltaTime * halfTransitionTime;
+                transitionImg.color = new Color(transitionImg.color.r, transitionImg.color.g, transitionImg.color.b, currentAlpha);
+            }
+            else if (transitionTimer > halfTransitionTime)
+            {
+                if (!hasAddedIndex)
+                {
+                    playlist[currentVideoIndex].video.SetActive(false);
+                    currentVideoIndex++;
+                    hasAddedIndex = true;
+                }
+                currentAlpha -= Time.deltaTime * halfTransitionTime;
+                transitionImg.color = new Color(transitionImg.color.r, transitionImg.color.g, transitionImg.color.b, currentAlpha);
+            }
+            if (transitionTimer > transitionTime + 1)
+            {
+                isTransitioning = false;
+                if (currentVideoIndex < playlist.Count)
+                {
+                    StartCoroutine(PlayVideo(playlist[currentVideoIndex].time));
+                }
+                else
+                {
+                    OnAllVideoDone.Invoke();
+                }
+            }
+        }
+        else if (currentVideoIndex < playlist.Count)
+        {
+            if (playlist[currentVideoIndex].isSkippable)
+            {
+                if (Input.GetKeyDown(KeyCode.F))
+                {
+                    playlist[currentVideoIndex].videoPlayer.Stop();
+                    isTransitioning = true;
+                    transitionTimer = 0f;
+                    currentAlpha = 0f;
+                    hasAddedIndex = false;
+                }
+            }
+        }
+    }
+
+    IEnumerator PlayVideo(float delayTime)
+    {
+        playlist[currentVideoIndex].video.SetActive(true);
+        playlist[currentVideoIndex].videoPlayer.Play();
+        yield return new WaitForSeconds(delayTime);
+        isTransitioning = true;
+        transitionTimer = 0f;
+        currentAlpha = 0f;
+        hasAddedIndex = false;
+    }
+}
