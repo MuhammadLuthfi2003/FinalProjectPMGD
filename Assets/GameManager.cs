@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,6 +12,10 @@ public class GameManager : MonoBehaviour
     public ScriptableInteger score;
     public ScriptableInteger flag;
     public ScriptableInteger healthScriptable;
+    public ScriptableInteger kayubakar;
+
+    [Header("Event objective reaches 0")]
+    public UnityEvent OnObjectiveComplete;
 
     private void Awake()
     {
@@ -30,11 +35,15 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         isPlaying = true;
+        kayubakar.value = kayubakar.defaultValue;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (kayubakar.value == 0)
+        {
+            OnObjectiveComplete.Invoke();
+        }
     }
 }

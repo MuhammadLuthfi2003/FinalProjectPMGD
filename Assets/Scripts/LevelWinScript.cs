@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameOverScript : MonoBehaviour
+public class LevelWinScript : MonoBehaviour
 {
-    public static GameOverScript Instance;
+    public static LevelWinScript Instance;
 
     void Awake()
     {
@@ -19,24 +19,31 @@ public class GameOverScript : MonoBehaviour
         }
     }
 
-    //Shows Game Over Screen
-    public void ShowGameOver()
+    //Shows the Level Win screen
+    public void ShowLevelWin()
     {
         GameManager.Instance.player.GetComponent<PlayerController>().enabled = false;
         gameObject.SetActive(true);
     }
 
+    //Go back to Main Menu
+    public void ToMainMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
+
     //Restarts Game
     public void RestartGame()
     {
+        //GameManager.Instance.kayubakar.value = GameManager.Instance.kayubakar.defaultValue;
         GameManager.Instance.player.GetComponent<PlayerController>().enabled = true;
         int currentScene = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(currentScene);
     }
 
-    //Go Back to Main Menu
-    public void ToMainMenu()
+    //Go to Next Level
+    public void ToNextLevel()
     {
-        SceneManager.LoadScene(0);
+        //Add code for next level transition
     }
 }
