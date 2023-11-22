@@ -1,26 +1,19 @@
-[NAME=Narrator]The year is 1942
+[NAME=Narrator]Panjaran merupakan sebuah desa yang terletak di tengah hutan dan berlokasi jauh dari keramaian kota.
 
-Indonesia is in a state of decay.
+Desa Panjaran juga terkenal dengan keamanan dan kenyamanannya.
 
-After being colonised by the Dutch for over 300 years, the Japanese have now taken over.
+Hal ini terbukti dari minimnya tindak kejahatan yang terjadi di desa ini.
 
-The Japanese have taken over the Dutch East Indies.
+Namun suasana yang tentram ini tidak dapat bertahan lama.
 
-People think that the Japanese are here to help them.
+Para penjajah yang sedang melakukan Invasi di daerah nusantara, telah sampai di desa panjaran dan bersiap untuk menangkap siapun yang ada, dan membunuh para warga desa yang melawan.
 
-But no, they are here to take over.
+Para penduduknya dipaksa untuk bekerja keras dan hidup dalam kondisi yang serba terbatas.
 
-People are being forced to work for the Japanese.
+Menjadi salah satu saksi bisu dari penindasan yang dilakukan oleh penjajah kepada nusantara, 
 
-They are being forced to work in the mines.
+Penderitaan penduduk desa membuat mereka merindukan kebebasan. Mereka mulai menyimpan cita-cita untuk meraih kemerdekaan, meskipun itu terasa seperti mimpi yang mustahil.
 
-They are being forced to work in the factories.
+Press 'F' to start the game
 
-They are being forced to work in the fields.
-
-They are being forced to work in the brothels.
-
-and other places.
-
-And now comes our hero to free them all.
 EndQueue

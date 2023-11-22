@@ -1,5 +1,5 @@
-[NAME=Arka]Hello!
-
+[NAME=Arka]
+Hello!
 What is your name?
 
 [NAME=Michael]My name is Michael, and this is NPC Dialogue.
