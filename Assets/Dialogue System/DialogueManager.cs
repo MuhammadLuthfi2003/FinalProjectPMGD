@@ -25,6 +25,8 @@ public class DialogueManager : MonoBehaviour
     public GameObject OptionsBox;
     public UnityEngine.UI.Text yesBtnText;
     public UnityEngine.UI.Text noBtnText;
+    public AudioClip typeSFX;
+    public AudioClip pressSFX;
     
 
     public bool freezePlayerOnDialogue = true;
@@ -33,11 +35,16 @@ public class DialogueManager : MonoBehaviour
     public bool isOpen; // represents if the dialogue box is open or closed
 
     private Queue<string> inputStream = new Queue<string>(); // stores dialogue
+    private AudioSource audioSource;
     public bool isQuestion = false;
     private int optionRemaining = 0;
     public bool lastOptionChosen = false;
     public bool isAnsweringQuestion = false;
+    private string currentText = "";
+    
     //private PlayerAnimController animController;
+
+    private bool isTyping = false;
 
     private void Awake()
     {
@@ -55,6 +62,7 @@ public class DialogueManager : MonoBehaviour
     {
         CanvasBox.SetActive(false); // close the dialogue box on play
         OptionsBox.SetActive(false);
+        audioSource = GetComponent<AudioSource>();
         //[TODO] : Add code to find player animator controller
         //animController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAnimController>();
     }
@@ -100,17 +108,30 @@ public class DialogueManager : MonoBehaviour
 
     public void AdvanceDialogue() // call when a player presses a button in Dialogue Trigger
     {
-        if (currentInteractableObject != null)
+        if (!isTyping)
         {
-            currentInteractableObject.onEventProgress.Invoke();
+            audioSource.PlayOneShot(pressSFX);
+            if (currentInteractableObject != null)
+            {
+                currentInteractableObject.onEventProgress.Invoke();
+            }
+            if (isAnsweringQuestion)
+            {
+                RespondAnswer();
+            }
+            else
+            {
+                PrintDialogue();
+            }
         }
-        if (isAnsweringQuestion)
+        else if (isTyping)
         {
-            RespondAnswer();
-        }
-        else
-        {
-            PrintDialogue();
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                StopAllCoroutines();
+                TextBox.text = currentText;
+                isTyping = false;
+            }
         }
     }
 
@@ -152,7 +173,9 @@ public class DialogueManager : MonoBehaviour
             }
             else
             {
-                TextBox.text = inputStream.Dequeue();
+                currentText = inputStream.Dequeue();
+                StartCoroutine(TypeSentence(currentText));
+                //TextBox.text = inputStream.Dequeue();
             }
         }
 
@@ -196,7 +219,9 @@ public class DialogueManager : MonoBehaviour
             {
                 string text = inputStream.Peek();
                 text = inputStream.Dequeue().Substring(text.IndexOf("}") + 1).ToString();
-                TextBox.text = text;
+                //TextBox.text = text;
+                currentText = text;
+                StartCoroutine(TypeSentence(currentText));
             }
             else if (inputStream.Peek().Contains("{N}"))
             {
@@ -216,7 +241,9 @@ public class DialogueManager : MonoBehaviour
             {
                 string text = inputStream.Peek();
                 text = inputStream.Dequeue().Substring(text.IndexOf("}") + 1).ToString();
-                TextBox.text = text;
+                //TextBox.text = text;
+                currentText = text;
+                StartCoroutine(TypeSentence(currentText));
             }
             else if (inputStream.Peek().Contains("{Y}"))
             {
@@ -247,6 +274,20 @@ public class DialogueManager : MonoBehaviour
             }
             currentInteractableObject.onExitEvent.Invoke();
         }
+    }
+
+    private IEnumerator TypeSentence(string text)
+    {
+        isTyping = true;
+        yield return new WaitForSeconds(.5f);
+        TextBox.text = "";
+        foreach (char letter in text.ToCharArray())
+        {
+            TextBox.text += letter;
+            audioSource.PlayOneShot(typeSFX);
+            yield return new WaitForSeconds(0.02f);
+        }
+        isTyping = false;
     }
 
 }
