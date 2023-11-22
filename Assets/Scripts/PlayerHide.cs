@@ -7,7 +7,8 @@ public class PlayerHide : MonoBehaviour
     [SerializeField] Color32 hideColor;
     [SerializeField] KeyCode hideButton;
     [Tooltip("Order in Layer of SpriteRenderer to hide in")]
-    [SerializeField] int hideLayer = 0; 
+    [SerializeField] int hideLayer = 0;
+    [SerializeField] GameObject hideIndicator;
 
     bool canHide = false;
     public bool isHiding = false;
@@ -23,6 +24,7 @@ public class PlayerHide : MonoBehaviour
         sprite = GetComponent<SpriteRenderer>();
         originalColor = sprite.color;
         originalLayer = sprite.sortingOrder;
+        hideIndicator.SetActive(false);
     }
 
     // Update is called once per frame
@@ -59,6 +61,7 @@ public class PlayerHide : MonoBehaviour
         if (collision.gameObject.tag == "HideArea")
         {
             canHide = true;
+            hideIndicator.SetActive(true);
         }
     }
 
@@ -67,6 +70,7 @@ public class PlayerHide : MonoBehaviour
         if (collision.gameObject.tag == "HideArea")
         {
             canHide = false;
+            hideIndicator.SetActive(false);
         }
     }
 }

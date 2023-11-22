@@ -16,6 +16,8 @@ public struct PlaylistItem
 
 public class VideoManager : MonoBehaviour
 {
+    public static VideoManager Instance;
+
     [SerializeField] private List<PlaylistItem> playlist;
     [SerializeField] private Image transitionImg;
     [SerializeField] private float transitionTime = 2f;
@@ -32,16 +34,26 @@ public class VideoManager : MonoBehaviour
 
     private void Awake()
     {
-        halfTransitionTime = transitionTime / 2f;
-
-        foreach (PlaylistItem item in playlist)
+        if (PlayerPrefs.GetInt("HasPlayed") == 1)
         {
-            item.video.SetActive(false);
+            OnAllVideoDone.Invoke();
         }
+        else if (PlayerPrefs.GetInt("HasPlayed") == 0 || !PlayerPrefs.HasKey("HasPlayed"))
+        {
+            PlayerPrefs.SetInt("HasPlayed", 1);
+            PlayerPrefs.Save();
 
-        transitionImg.color = new Color(transitionImg.color.r, transitionImg.color.g, transitionImg.color.b, 0f);
+            halfTransitionTime = transitionTime / 2f;
 
-        StartCoroutine(PlayVideo(playlist[currentVideoIndex].time));
+            foreach (PlaylistItem item in playlist)
+            {
+                item.video.SetActive(false);
+            }
+
+            transitionImg.color = new Color(transitionImg.color.r, transitionImg.color.g, transitionImg.color.b, 0f);
+
+            StartCoroutine(PlayVideo(playlist[currentVideoIndex].time));
+        }
     }
 
     private void Update()
@@ -104,5 +116,12 @@ public class VideoManager : MonoBehaviour
         transitionTimer = 0f;
         currentAlpha = 0f;
         hasAddedIndex = false;
+    }
+
+    private void OnApplicationQuit()
+    {
+        PlayerPrefs.SetInt("HasPlayed", 0);
+        PlayerPrefs.Save();
+        print("aa");
     }
 }

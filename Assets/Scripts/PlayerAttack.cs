@@ -27,7 +27,7 @@ public class PlayerAttack : MonoBehaviour
     void Update()
     {
         timeSinceLastAttack += Time.deltaTime;
-        if (CheckEnemy() && Input.GetKeyDown(attackButton))
+        if (CheckEnemy() && Input.GetKeyDown(attackButton) && !GameManager.Instance.player.GetComponent<PlayerHide>().isHiding)
         {
             if (enemyInRange != null && timeSinceLastAttack > attackInterval)
             {

@@ -61,6 +61,8 @@ public class MainMenuManager : MonoBehaviour
 
     public void Quit()
     {
+        PlayerPrefs.SetInt("HasPlayed", 0);
+        PlayerPrefs.Save();
         Application.Quit();
     }
 }
