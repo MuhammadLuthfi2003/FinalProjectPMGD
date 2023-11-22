@@ -21,6 +21,7 @@ public class VideoManager : MonoBehaviour
     [SerializeField] private List<PlaylistItem> playlist;
     [SerializeField] private Image transitionImg;
     [SerializeField] private float transitionTime = 2f;
+    [SerializeField] private bool seeCutsceneOnReload = false;
 
     public UnityEvent OnAllVideoDone;
 
@@ -34,26 +35,43 @@ public class VideoManager : MonoBehaviour
 
     private void Awake()
     {
-        if (PlayerPrefs.GetInt("HasPlayed") == 1)
+        if (!seeCutsceneOnReload)
         {
-            OnAllVideoDone.Invoke();
-        }
-        else if (PlayerPrefs.GetInt("HasPlayed") == 0 || !PlayerPrefs.HasKey("HasPlayed"))
-        {
-            PlayerPrefs.SetInt("HasPlayed", 1);
-            PlayerPrefs.Save();
-
-            halfTransitionTime = transitionTime / 2f;
-
-            foreach (PlaylistItem item in playlist)
+            if (PlayerPrefs.GetInt("HasPlayed") == 1)
             {
-                item.video.SetActive(false);
+                OnAllVideoDone.Invoke();
             }
+            else if (PlayerPrefs.GetInt("HasPlayed") == 0 || !PlayerPrefs.HasKey("HasPlayed"))
+            {
+                PlayerPrefs.SetInt("HasPlayed", 1);
+                PlayerPrefs.Save();
 
-            transitionImg.color = new Color(transitionImg.color.r, transitionImg.color.g, transitionImg.color.b, 0f);
-
-            StartCoroutine(PlayVideo(playlist[currentVideoIndex].time));
+                Setup();
+            }
         }
+        else
+        {
+            Setup();
+        }
+    }
+
+    private void Setup()
+    {
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.player.GetComponent<PlayerController>().enabled = false;
+        }
+
+        halfTransitionTime = transitionTime / 2f;
+
+        foreach (PlaylistItem item in playlist)
+        {
+            item.video.SetActive(false);
+        }
+
+        transitionImg.color = new Color(transitionImg.color.r, transitionImg.color.g, transitionImg.color.b, 0f);
+
+        StartCoroutine(PlayVideo(playlist[currentVideoIndex].time));
     }
 
     private void Update()
@@ -122,6 +140,5 @@ public class VideoManager : MonoBehaviour
     {
         PlayerPrefs.SetInt("HasPlayed", 0);
         PlayerPrefs.Save();
-        print("aa");
     }
 }
