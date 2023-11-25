@@ -15,6 +15,9 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] KeyCode attackButton;
     [SerializeField] private float attackInterval = 1f;
 
+    [Header("Indicator")]
+    [SerializeField] private GameObject indicator;
+
     [Header("Raycast Settings")]
     [SerializeField] private LayerMask enemyLayer;
     [SerializeField] private float distanceCollider = 1f;
@@ -22,28 +25,51 @@ public class PlayerAttack : MonoBehaviour
 
     private GameObject enemyInRange;
     private float timeSinceLastAttack = 0f;
+    private Animator anim;
+
+    private void Start()
+    {
+        anim = GetComponent<Animator>();
+    }
 
     // Update is called once per frame
     void Update()
     {
         timeSinceLastAttack += Time.deltaTime;
-        if (CheckEnemy() && Input.GetKeyDown(attackButton) && !GameManager.Instance.player.GetComponent<PlayerHide>().isHiding)
+
+
+
+        if (CheckEnemy() && !GameManager.Instance.player.GetComponent<PlayerHide>().isHiding)
         {
-            if (enemyInRange != null && timeSinceLastAttack > attackInterval)
+            indicator.SetActive(true);
+            if (Input.GetKeyDown(attackButton))
             {
-                AttackEnemy();
-                timeSinceLastAttack = 0;
+                if (enemyInRange != null && timeSinceLastAttack > attackInterval)
+                {
+                    PlayAttackAnim();
+                    timeSinceLastAttack = 0;
+                }
             }
         }
+        else
+        {
+            indicator.SetActive(false);
+        }
+
     }
 
 
-    private void AttackEnemy()
+    public void AttackEnemy()
     {
         if (enemyInRange.TryGetComponent<Health>(out Health enemyHealth))
         {
             enemyHealth.TakeDamage(attackDamage);
         }
+    }
+
+    private void PlayAttackAnim()
+    {
+        anim.SetTrigger("attack");
     }
 
     private bool CheckEnemy()

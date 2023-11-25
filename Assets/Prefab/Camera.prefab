@@ -194,7 +194,7 @@ MonoBehaviour:
   CameraViewArea: {fileID: 519420034}
   smoothSpeed: 0.5
   xOffset: 3.41
-  yOffset: 2.64
+  yOffset: 0.5
   canGoLeft: 1
 --- !u!61 &519420034
 BoxCollider2D:

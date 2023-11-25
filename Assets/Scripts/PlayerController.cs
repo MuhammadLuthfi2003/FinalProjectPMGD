@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour
     private Collider2D coll;
     private Animator anim;
     private SpriteRenderer sprite;
+    public bool isJumping = false;
+    public bool hasJumped = false;
 
     public bool isFacingRight = true;
 
@@ -26,7 +28,7 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         coll = GetComponent<Collider2D>();
-       // anim = GetComponent<Animator>();
+        anim = GetComponent<Animator>();
         sprite = GetComponent<SpriteRenderer>();
     }
 
@@ -55,7 +57,6 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetButtonDown("Jump"))
         {
-
             if (IsGrounded())
             {
                 rb.velocity = new Vector2(rb.velocity.x, jumpForce);
@@ -67,10 +68,10 @@ public class PlayerController : MonoBehaviour
         {
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
         }
-
         UpdateAnimation();
 
     }
+
 
     private void UpdateAnimation()
     {
@@ -81,25 +82,37 @@ public class PlayerController : MonoBehaviour
         {
             state = MovementState.running;
             sprite.flipX = false;
+            anim.SetBool("isWalking", true);
         }
         else if (dirX < 0f)
         {
             state = MovementState.running;
             sprite.flipX = true;
+            anim.SetBool("isWalking", true);
         }
         else
         {
             state = MovementState.idle;
+            anim.SetBool("isWalking", false);
         }
 
         if (rb.velocity.y > 0.1f)
         {
             state = MovementState.jumping;
+            if (!isJumping)
+            {
+                anim.SetTrigger("jump");
+            }
+            isJumping = true;
         }
-
         else if (rb.velocity.y < -0.1f)
         {
             state = MovementState.falling;
+        }
+        else if (IsGrounded() && isJumping)
+        {
+            isJumping = false;
+            anim.SetTrigger("grounded");
         }
 
         //anim.SetInteger("state", (int)state);
@@ -107,9 +120,7 @@ public class PlayerController : MonoBehaviour
 
     private bool IsGrounded()
     {
-
         bool res =  Physics2D.BoxCast(coll.bounds.center, coll.bounds.size, 0f, Vector2.down, 0.1f, jumpableGround);
-
         return res;
     }
 }

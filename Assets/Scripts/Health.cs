@@ -13,8 +13,13 @@ public class Health : MonoBehaviour
 
     public bool isDead = false;
 
+    [Header("Animation Settings")]
+    public string dieTrigger = "die";
+
     [Header("Event health reaches 0")]
     public UnityEvent OnLifeReachedZero;
+
+    private Animator anim;
 
     private void Start()
     {
@@ -26,6 +31,8 @@ public class Health : MonoBehaviour
         {
             health = maxHealth;
         }
+
+        anim = GetComponent<Animator>();
     }
 
     public void TakeDamage(int damage)
@@ -76,5 +83,10 @@ public class Health : MonoBehaviour
         {
             health += heal;
         }
+    }
+
+    public void PlayDeathAnim()
+    {
+        anim.SetTrigger(dieTrigger);
     }
 }

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 891826672606395691}
   - component: {fileID: 891826672606395690}
   - component: {fileID: 891826672606395693}
+  - component: {fileID: 6013067195161526012}
   m_Layer: 2
   m_Name: Flag
   m_TagString: Untagged
@@ -27,8 +28,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 891826672606395692}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 14.7641, y: -2.3471, z: 0}
-  m_LocalScale: {x: 1.5683299, y: 0.9258704, z: 1}
+  m_LocalPosition: {x: 14.7641, y: -2.1992, z: 0}
+  m_LocalScale: {x: 1.5683299, y: 1.4375494, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -75,8 +76,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 6
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: c76fe783bf0d769488f830121f6e5c02, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -99,18 +100,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.00000062584877, y: -0.03226906}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 1.03, y: 0.65}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.81935805, y: 0.522417}
   m_EdgeRadius: 0
 --- !u!114 &891826672606395693
 MonoBehaviour:
@@ -124,3 +125,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 018e381351b46544caa5b22c1bb14fd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6013067195161526012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 891826672606395692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a8c4f7cb0306274bac7385620b6f7ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverSpeed: 1
+  amplitude: 0.5
+  isVertical: 1
