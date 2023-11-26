@@ -16,6 +16,9 @@ public class Health : MonoBehaviour
     [Header("Animation Settings")]
     public string dieTrigger = "die";
 
+    [Header("VFX Settings")]
+    public GameObject deathVFX;
+
     [Header("Event health reaches 0")]
     public UnityEvent OnLifeReachedZero;
 
@@ -47,6 +50,8 @@ public class Health : MonoBehaviour
                 OnLifeReachedZero.Invoke();
                 isDead = true;
             }
+
+            Instantiate(deathVFX, transform.position, Quaternion.identity);
 
             return;
         }

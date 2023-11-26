@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyDeath : MonoBehaviour
 {
+    [SerializeField] GameObject deathVFX;
     private Animator anim;
 
     private void Start()
@@ -14,6 +15,7 @@ public class EnemyDeath : MonoBehaviour
     public void OnEnemyDeath()
     {
         anim.SetTrigger("die");
+        Instantiate(deathVFX, transform.position, Quaternion.identity);
     }
 
     public void DestroyEnemy()

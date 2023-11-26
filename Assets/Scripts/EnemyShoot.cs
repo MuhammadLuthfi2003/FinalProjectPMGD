@@ -17,6 +17,10 @@ public class EnemyShoot : MonoBehaviour
     [SerializeField] float shootInterval = 3f;
     [SerializeField] bool shootRightDirection = false;
 
+    [Header("VFX Settings")]
+    [SerializeField] GameObject shootVFX;
+    [SerializeField] bool isVFXFacingRight = false;
+
     private float shootTimer = 0f;
 
     private EnemyPatrol enemyPatrol;
@@ -70,11 +74,33 @@ public class EnemyShoot : MonoBehaviour
                 {
                     GameObject bullet = Instantiate(bulletPrefab, shootPointRight.position, Quaternion.identity);
                     bullet.GetComponent<Moveable>().direction = Direction.Right;
+                    
+                    if (isVFXFacingRight)
+                    {
+                        GameObject vfx = Instantiate(shootVFX, shootPointRight.position, Quaternion.identity);
+                        vfx.GetComponent<SpriteRenderer>().flipX = true;
+                    }
+                    else
+                    {
+                        GameObject vfx = Instantiate(shootVFX, shootPointRight.position, Quaternion.identity);
+                        vfx.GetComponent<SpriteRenderer>().flipX = false;
+                    }
                 }
                 else
                 {
                     GameObject bullet = Instantiate(bulletPrefab, shootPointLeft.position, Quaternion.identity);
                     bullet.GetComponent<Moveable>().direction = Direction.Left;
+
+                    if (isVFXFacingRight)
+                    {
+                        GameObject vfx = Instantiate(shootVFX, shootPointLeft.position, Quaternion.identity);
+                        vfx.GetComponent<SpriteRenderer>().flipX = false;
+                    }
+                    else
+                    {
+                        GameObject vfx = Instantiate(shootVFX, shootPointLeft.position, Quaternion.identity);
+                        vfx.GetComponent<SpriteRenderer>().flipX = true;
+                    }
                 }
             }
             else

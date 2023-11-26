@@ -356,6 +356,7 @@ MonoBehaviour:
   maxHealth: 3
   isDead: 0
   dieTrigger: die
+  deathVFX: {fileID: 8501337914207227759, guid: 0b8e49a5916049549872dc6673b7ef3a, type: 3}
   OnLifeReachedZero:
     m_PersistentCalls:
       m_Calls:
