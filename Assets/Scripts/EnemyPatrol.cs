@@ -19,14 +19,21 @@ public class EnemyPatrol : MonoBehaviour
     public bool isMoving = true;
 
     private SpriteRenderer spriteRenderer;
-
+    private Animator anim;
+    private Health health;
 
 
     // Start is called before the first frame update
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        anim = GetComponent<Animator>();
         SetPatrolPoint(transform.position);
+
+        if (GetComponent<Health>() != null)
+        {
+            health = GetComponent<Health>();
+        }
     }
 
     public void SetPatrolPoint(Vector3 newPos)
@@ -62,8 +69,14 @@ public class EnemyPatrol : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (health != null)
+        {
+            if (health.isDead) { return; }
+        }
+
         if (isMoving)
         {
+            anim.SetBool("isMoving", true);
             transform.position = Vector2.MoveTowards(transform.position, currentPatrolPoint, speed * Time.deltaTime);
 
             if (transform.position.x <= pointLeft.x) // if the enemy is at the left point

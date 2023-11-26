@@ -32,17 +32,28 @@ public class EnemyDetect : MonoBehaviour
     public UnityEvent OnPlayerNotFound;
 
     private PlayerHide playerHide;
+    private Animator anim;
+    private Health health;
 
     // Start is called before the first frame update
     void Start()
     {
         player = GameManager.Instance.player;
         playerHide = player.GetComponent<PlayerHide>();
+        anim = GetComponent<Animator>();
+        if (GetComponent<Health>() != null )
+        {
+            health = GetComponent<Health>();
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (health != null)
+        {
+            if (health.isDead) { return; }
+        }
 
         if (CheckPlayer())
         {
@@ -53,15 +64,26 @@ public class EnemyDetect : MonoBehaviour
                 if (useEnemyPatrol)
                 {
                     enemyPatrol.isMoving = false;
+                    anim.SetBool("isMoving", false);
                 }
             }
+            if (player.GetComponent<PlayerHide>().isHiding)
+            {
+                if (useEnemyPatrol)
+                {
+                    enemyPatrol.isMoving = true;
+                    anim.SetBool("isMoving", true);
+                }
 
+                OnPlayerNotFound.Invoke();
+            }
         }
         else
         {
             if (useEnemyPatrol)
             {
                 enemyPatrol.isMoving = true;
+                anim.SetBool("isMoving", true);
             }
             OnPlayerNotFound.Invoke();
 

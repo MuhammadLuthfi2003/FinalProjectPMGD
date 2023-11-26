@@ -21,10 +21,12 @@ public class EnemyShoot : MonoBehaviour
 
     private EnemyPatrol enemyPatrol;
     private Transform shootPointToUse;
+    private Animator anim;
 
     // Start is called before the first frame update
     void Start()
     {
+        anim = GetComponent<Animator>();
         if (useEnemyPatrol)
         {
             enemyPatrol = GetComponent<EnemyPatrol>();
@@ -47,6 +49,15 @@ public class EnemyShoot : MonoBehaviour
     void Update()
     {
         shootTimer += Time.deltaTime;
+    }
+
+    public void PlayShootAnimation()
+    {
+        if (shootTimer >= shootInterval)
+        {
+            if (anim.GetCurrentAnimatorStateInfo(0).IsName("shoot")) { return; }
+            anim.SetTrigger("shoot");
+        }
     }
 
     public void Shoot()
