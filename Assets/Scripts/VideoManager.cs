@@ -106,6 +106,7 @@ public class VideoManager : MonoBehaviour
                 else
                 {
                     OnAllVideoDone.Invoke();
+                    StartCoroutine(DisableObj());
                 }
             }
         }
@@ -134,6 +135,12 @@ public class VideoManager : MonoBehaviour
         transitionTimer = 0f;
         currentAlpha = 0f;
         hasAddedIndex = false;
+    }
+
+    IEnumerator DisableObj()
+    {
+        yield return new WaitForSeconds(5);
+        gameObject.SetActive(false);
     }
 
     private void OnApplicationQuit()

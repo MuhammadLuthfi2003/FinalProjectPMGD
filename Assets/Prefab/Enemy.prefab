@@ -95,7 +95,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7762679952483843885}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.78, y: 0.75, z: 0}
+  m_LocalPosition: {x: 12.19, y: 0.75, z: 0}
   m_LocalScale: {x: 0.333, y: 0.333, z: 0.333}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -144,7 +144,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: d086a60c1d34f7b4189e9472519f0f3c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
@@ -205,7 +205,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ca9f3914354e6548a8a79f55918911a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementRange: 3
+  movementRange: 8
   speed: 1
   isFacingRight: 0
   isMoving: 1
@@ -224,7 +224,7 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 1
-  attackRange: 6.86
+  attackRange: 4.5
   distanceCollider: 3.54
   player: {fileID: 0}
   collider: {fileID: 7762679952483843880}
@@ -285,8 +285,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   useScriptableHealth: 0
   healthScriptable: {fileID: 0}
+  useScriptableShield: 0
+  shieldScriptable: {fileID: 0}
   health: 3
   maxHealth: 3
+  maxShield: 2
+  shield: 0
   isDead: 0
   dieTrigger: die
   deathVFX: {fileID: 0}
@@ -319,6 +323,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreScriptable: {fileID: 11400000, guid: d0f75b56a961fbf44b2437f7d56de9c4, type: 2}
   scoreValue: 20
+  useItemDrops: 1
+  itemDrops:
+  - item: {fileID: 0}
+    dropChance: 30
+  - item: {fileID: 7456757741096347264, guid: e256139b54c2d2742a466c3d46007cdb, type: 3}
+    dropChance: 40
+  - item: {fileID: 891826672606395692, guid: 14b998461497150439f9cbb52692f016, type: 3}
+    dropChance: 20
+  - item: {fileID: 8816495070000959145, guid: 40cbe3a332435ce40b6b4f0fb94e4742, type: 3}
+    dropChance: 40
   deathVFX: {fileID: 8501337914207227759, guid: 0b8e49a5916049549872dc6673b7ef3a, type: 3}
 --- !u!95 &7657410278977204346
 Animator:

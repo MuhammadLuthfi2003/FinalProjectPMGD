@@ -76,6 +76,7 @@ public class EnemyShoot : MonoBehaviour
                     GameObject bullet = Instantiate(bulletPrefab, shootPointRight.position, Quaternion.identity);
                     bullet.GetComponent<Moveable>().direction = Direction.Right;
                     bullet.GetComponent<Projectile>().damage = bulletDamage;
+                    bullet.GetComponent<SpriteRenderer>().flipX = true;
                     
                     if (isVFXFacingRight)
                     {
@@ -93,6 +94,7 @@ public class EnemyShoot : MonoBehaviour
                     GameObject bullet = Instantiate(bulletPrefab, shootPointLeft.position, Quaternion.identity);
                     bullet.GetComponent<Moveable>().direction = Direction.Left;
                     bullet.GetComponent<Projectile>().damage = bulletDamage;
+                    
 
                     if (isVFXFacingRight)
                     {
@@ -112,11 +114,36 @@ public class EnemyShoot : MonoBehaviour
                 {
                     GameObject bullet = Instantiate(bulletPrefab, shootPointToUse.position, Quaternion.identity);
                     bullet.GetComponent<Moveable>().direction = Direction.Right;
+                    bullet.GetComponent<Projectile>().damage = bulletDamage;
+                    bullet.GetComponent<SpriteRenderer>().flipX = true;
+
+                    if (isVFXFacingRight)
+                    {
+                        GameObject vfx = Instantiate(shootVFX, shootPointRight.position, Quaternion.identity);
+                        vfx.GetComponent<SpriteRenderer>().flipX = true;
+                    }
+                    else
+                    {
+                        GameObject vfx = Instantiate(shootVFX, shootPointRight.position, Quaternion.identity);
+                        vfx.GetComponent<SpriteRenderer>().flipX = false;
+                    }
                 }
                 else
                 {
                     GameObject bullet = Instantiate(bulletPrefab, shootPointToUse.position, Quaternion.identity);
+                    bullet.GetComponent<Projectile>().damage = bulletDamage;
                     bullet.GetComponent<Moveable>().direction = Direction.Left;
+
+                    if (isVFXFacingRight)
+                    {
+                        GameObject vfx = Instantiate(shootVFX, shootPointLeft.position, Quaternion.identity);
+                        vfx.GetComponent<SpriteRenderer>().flipX = false;
+                    }
+                    else
+                    {
+                        GameObject vfx = Instantiate(shootVFX, shootPointLeft.position, Quaternion.identity);
+                        vfx.GetComponent<SpriteRenderer>().flipX = true;
+                    }
                 }
             }
             shootTimer = 0f;

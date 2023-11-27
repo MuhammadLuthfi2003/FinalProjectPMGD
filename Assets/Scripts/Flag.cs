@@ -10,6 +10,7 @@ public class Flag : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             GameManager.Instance.flag.value++;
+            GameManager.Instance.score.value += 30;
             Destroy(gameObject);
         }
     }

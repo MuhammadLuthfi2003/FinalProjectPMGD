@@ -11,6 +11,7 @@ public class KayuBakar : MonoBehaviour
         if(collision.CompareTag("Player"))
         {
             GameManager.Instance.kayubakar.value--;
+            GameManager.Instance.score.value += 10;
             Destroy(gameObject);
         }
     }

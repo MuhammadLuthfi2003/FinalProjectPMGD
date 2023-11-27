@@ -13,6 +13,10 @@ public class GameManager : MonoBehaviour
     public ScriptableInteger flag;
     public ScriptableInteger healthScriptable;
     public ScriptableInteger kayubakar;
+    public ScriptableInteger shield;
+
+    [Header("Jumlah Kayu Bakar yang harus dikumpulkan")]
+    public int kayubakarGoal = 5;
 
     [Header("Event objective reaches 0")]
     public UnityEvent OnObjectiveComplete;
@@ -35,15 +39,17 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         isPlaying = true;
+        kayubakar.defaultValue = kayubakarGoal;
         kayubakar.value = kayubakar.defaultValue;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (kayubakar.value == 0)
+        if (kayubakar.value == 0 && isPlaying)
         {
             OnObjectiveComplete.Invoke();
+            isPlaying = false;
         }
     }
 }

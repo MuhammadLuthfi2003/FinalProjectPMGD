@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 public class PauseMenuScript : MonoBehaviour
 {
     public static PauseMenuScript Instance;
+    public bool isPaused = false;
+    public GameObject pausePanel;
 
     void Awake()
     {
@@ -23,13 +25,17 @@ public class PauseMenuScript : MonoBehaviour
     public void ShowPauseMenu()
     {
         GameManager.Instance.player.GetComponent<PlayerController>().enabled = false;
-        gameObject.SetActive(true);
+        isPaused = true;
+        pausePanel.SetActive(true);
+        Time.timeScale = 0;
     }
 
     //Hides the Pause Menu
     public void HidePauseMenu()
     {
-        gameObject.SetActive(false);
+        Time.timeScale = 1;
+        isPaused = false;
+        pausePanel.SetActive(false);
         GameManager.Instance.player.GetComponent<PlayerController>().enabled = true;
     }
 
@@ -45,5 +51,17 @@ public class PauseMenuScript : MonoBehaviour
     public void ToMainMenu()
     {
         SceneManager.LoadScene(0);
+    }
+
+    public void TogglePause()
+    {
+        if (isPaused)
+        {
+            HidePauseMenu();
+        }
+        else
+        {
+            ShowPauseMenu();
+        }
     }
 }

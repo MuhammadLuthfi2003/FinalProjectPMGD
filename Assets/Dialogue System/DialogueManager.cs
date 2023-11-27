@@ -26,6 +26,7 @@ public class DialogueManager : MonoBehaviour
     public UnityEngine.UI.Text yesBtnText;
     public UnityEngine.UI.Text noBtnText;
     public AudioClip typeSFX;
+    public AudioClip typeSFX2;
     public AudioClip pressSFX;
     
 
@@ -41,6 +42,7 @@ public class DialogueManager : MonoBehaviour
     public bool lastOptionChosen = false;
     public bool isAnsweringQuestion = false;
     private string currentText = "";
+    public int typeSFXToggle = 0;
     
     //private PlayerAnimController animController;
 
@@ -98,7 +100,7 @@ public class DialogueManager : MonoBehaviour
                 DisablePlayerController();
             }
         }
-
+        typeSFXToggle = 0;
         CanvasBox.SetActive(true); // open the dialogue box
 
         isOpen = true;
@@ -284,7 +286,16 @@ public class DialogueManager : MonoBehaviour
         foreach (char letter in text.ToCharArray())
         {
             TextBox.text += letter;
-            audioSource.PlayOneShot(typeSFX);
+            typeSFXToggle++;
+
+            if (typeSFXToggle / 2 == 0)
+            {
+                audioSource.PlayOneShot(typeSFX);
+            }
+            else
+            {
+                audioSource.PlayOneShot(typeSFX2);
+            }
             yield return new WaitForSeconds(0.02f);
         }
         isTyping = false;

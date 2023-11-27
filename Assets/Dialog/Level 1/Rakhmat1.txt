@@ -1,0 +1,26 @@
+[NAME=Rakhmat] 
+Arka! kesini sebentar!
+[NAME=Arka] Ada apa mas rakhmat?
+[NAME=Rakhmat] Disebelah kanan saya terlihat musuh!
+[OPTIONS] Apakah mas Arka tahu cara mengalahkannya?
+[CHOICE=Y] Iya
+[CHOICE=N] Tidak
+
+{Y} Baiklah jika begitu
+
+{N} Baiklah, akan ku jelaskan caranya.
+{N} Ketika anda sudah berada di dekat musuh, tekan tombol Shift Kanan untuk menyerang.
+{N} Apabila anda terlihat musuh, larilah ke tempat persembunyian, karena musuh akan menembakkan peluru.
+{N} contoh tempat persembunyian yang dapat ditemukan adalah :
+{N} Semak-semak, rumput, pohon dan objek lainnya yang memiliki garis putih diluarnya.
+{N} Ketika anda berada di tempat persembunyian, tekan tombol E untuk bersembunyi.
+{N} Ketika bersembunyi, musuh tidak akan melihat anda dan peluru yang ditembakkan musuh tidak akan mengenai anda.
+{N} Akan tetapi, ketika bersembunyi, anda tidak dapat menyerang musuh.
+{N} Oleh karena itu, anda harus keluar dari tempat persembunyian untuk menyerang musuh.
+{N} Untuk keluar dari tempat persembunyian, tekan tombol E lagi.
+{N} Itu saja dari saya mengenai cara mengalahkan musuh.
+[ENDCHOICE]
+
+Semoga beruntung dalam pertempuran!
+
+EndQueue

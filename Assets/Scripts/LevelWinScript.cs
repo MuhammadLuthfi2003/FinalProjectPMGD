@@ -26,6 +26,13 @@ public class LevelWinScript : MonoBehaviour
         gameObject.SetActive(true);
     }
 
+    public void CalculateScore()
+    {
+        GameManager.Instance.score.value += GameManager.Instance.player.GetComponent<Health>().health * 10;
+        GameManager.Instance.score.value += GameManager.Instance.shield.value * 30;
+        GameManager.Instance.score.value += 50;
+    }
+
     //Go back to Main Menu
     public void ToMainMenu()
     {
