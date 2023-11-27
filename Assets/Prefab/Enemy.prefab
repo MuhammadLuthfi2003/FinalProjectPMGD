@@ -268,6 +268,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 7608130508133823269, guid: d355ef808dc4d5744a769c9c47266f0d, type: 3}
   shootInterval: 3
   shootRightDirection: 0
+  bulletDamage: 1
   shootVFX: {fileID: 4859568087801758767, guid: ce9524d17a33e684ba7c045d677097b3, type: 3}
   isVFXFacingRight: 0
 --- !u!114 &7762679952483843893
@@ -316,6 +317,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67da7c896caf4f54eac129c7df12c61f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scoreScriptable: {fileID: 11400000, guid: d0f75b56a961fbf44b2437f7d56de9c4, type: 2}
+  scoreValue: 20
   deathVFX: {fileID: 8501337914207227759, guid: 0b8e49a5916049549872dc6673b7ef3a, type: 3}
 --- !u!95 &7657410278977204346
 Animator:

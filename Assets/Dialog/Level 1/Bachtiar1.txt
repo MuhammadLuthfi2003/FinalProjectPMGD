@@ -1,0 +1,9 @@
+[NAME=Bachtiar] 
+Selamat datang di pasukan saya Arka!
+[NAME=Arka] Terima kasih pak!
+[NAME=Bachtiar] Tugasmu hari ini adalah mengumpulkan kayu bakar yang dapat ditemukan di hutan.
+Kayu bakar ini akan digunakan untuk membuat api unggun di kamp kita.
+Jangan lupa juga bahwa terdapat beberapa penjajah yang siap menyerangmu, jadi waspadalah!
+Itu saja dari saya, semoga berhasil!
+[NAME=Arka] Baik pak!
+EndQueue

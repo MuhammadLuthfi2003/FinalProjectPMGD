@@ -16,6 +16,7 @@ public class EnemyShoot : MonoBehaviour
     [SerializeField] GameObject bulletPrefab;
     [SerializeField] float shootInterval = 3f;
     [SerializeField] bool shootRightDirection = false;
+    [SerializeField] int bulletDamage = 1;
 
     [Header("VFX Settings")]
     [SerializeField] GameObject shootVFX;
@@ -74,6 +75,7 @@ public class EnemyShoot : MonoBehaviour
                 {
                     GameObject bullet = Instantiate(bulletPrefab, shootPointRight.position, Quaternion.identity);
                     bullet.GetComponent<Moveable>().direction = Direction.Right;
+                    bullet.GetComponent<Projectile>().damage = bulletDamage;
                     
                     if (isVFXFacingRight)
                     {
@@ -90,6 +92,7 @@ public class EnemyShoot : MonoBehaviour
                 {
                     GameObject bullet = Instantiate(bulletPrefab, shootPointLeft.position, Quaternion.identity);
                     bullet.GetComponent<Moveable>().direction = Direction.Left;
+                    bullet.GetComponent<Projectile>().damage = bulletDamage;
 
                     if (isVFXFacingRight)
                     {

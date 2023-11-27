@@ -352,8 +352,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   useScriptableHealth: 1
   healthScriptable: {fileID: 11400000, guid: 988523f4835e09f4797b2878b252f0ef, type: 2}
-  health: 3
-  maxHealth: 3
+  useScriptableShield: 1
+  shieldScriptable: {fileID: 11400000, guid: 32d0b228334792449b99d0a5e8d901ae, type: 2}
+  health: 10
+  maxHealth: 10
+  maxShield: 2
+  shield: 0
   isDead: 0
   dieTrigger: die
   deathVFX: {fileID: 8501337914207227759, guid: 0b8e49a5916049549872dc6673b7ef3a, type: 3}

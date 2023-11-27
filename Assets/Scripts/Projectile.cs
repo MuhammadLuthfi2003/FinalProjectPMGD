@@ -7,7 +7,7 @@ public class Projectile : MonoBehaviour
 {
     [Header("Projectile Properties")]
     [SerializeField] string tagToHit;
-    [SerializeField] int damage = 1;
+    [SerializeField] public int damage = 1;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

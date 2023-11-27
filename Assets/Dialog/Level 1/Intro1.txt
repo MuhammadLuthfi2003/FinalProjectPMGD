@@ -1,19 +1,16 @@
-[NAME=Narrator]Panjaran merupakan sebuah desa yang terletak di tengah hutan dan berlokasi jauh dari keramaian kota.
+[NAME=Arka] Hmmm...
 
-Desa Panjaran juga terkenal dengan keamanan dan kenyamanannya.
+[OPTIONS] Halo pemain!, apakah anda mengetahui cara mengerakkan aku ke kanan dan kiri?
+[CHOICE=Y]IYA
+[CHOICE=N]TIDAK
 
-Hal ini terbukti dari minimnya tindak kejahatan yang terjadi di desa ini.
+{Y} Jika begitu, baiklah tidak akan kujelaskan, selamat bermain!.
 
-Namun suasana yang tentram ini tidak dapat bertahan lama.
-
-Para penjajah yang sedang melakukan Invasi di daerah nusantara, telah sampai di desa panjaran dan bersiap untuk menangkap siapun yang ada, dan membunuh para warga desa yang melawan.
-
-Para penduduknya dipaksa untuk bekerja keras dan hidup dalam kondisi yang serba terbatas.
-
-Menjadi salah satu saksi bisu dari penindasan yang dilakukan oleh penjajah kepada nusantara, 
-
-Penderitaan penduduk desa membuat mereka merindukan kebebasan. Mereka mulai menyimpan cita-cita untuk meraih kemerdekaan, meskipun itu terasa seperti mimpi yang mustahil.
-
-Press 'F' to start the game
+{N} Jika begitu, baiklah akan kujelaskan cara mengerakkan aku ke kanan dan kiri.
+{N} Untuk mengerakkan aku ke kanan, cukup tekan tombol D atau panah kanan di keyboard anda.
+{N} Untuk mengerakkan aku ke kiri, cukup tekan tombol A atau panah kiri di keyboard anda.
+{N} Untuk melompat, cukup tekan tombol Spacebar di keyboard anda.
+{N} Saya rasa itu saja yang perlu anda ketahui, selamat bermain!
+[ENDCHOICE]
 
 EndQueue

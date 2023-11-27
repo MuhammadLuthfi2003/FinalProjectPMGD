@@ -8,8 +8,14 @@ public class Health : MonoBehaviour
     [SerializeField] bool useScriptableHealth = false;
     [SerializeField] ScriptableInteger healthScriptable;
 
+    [SerializeField] bool useScriptableShield = false;
+    [SerializeField] ScriptableInteger shieldScriptable;
+
     public int health = 3;
     public int maxHealth = 3;
+
+    public int maxShield = 2;
+    public int shield = 0;
 
     public bool isDead = false;
 
@@ -29,6 +35,7 @@ public class Health : MonoBehaviour
         if (useScriptableHealth)
         {
             healthScriptable.value = maxHealth;
+            shieldScriptable.value = shield;
         }
         else
         {
@@ -41,6 +48,24 @@ public class Health : MonoBehaviour
     public void TakeDamage(int damage)
     {
         if (isDead) return;
+        if (useScriptableShield)
+        {
+            if (shieldScriptable.value > 0)
+            {
+                if (damage > shieldScriptable.value)
+                {
+                    damage -= shieldScriptable.value;
+                    shieldScriptable.value = 0;
+                }
+                else
+                {
+                    shieldScriptable.value -= damage;
+                    damage = 0;
+                    return;
+                }
+            }
+        }
+
         if (useScriptableHealth)
         {
             healthScriptable.value -= damage;
@@ -87,6 +112,23 @@ public class Health : MonoBehaviour
         else
         {
             health += heal;
+        }
+    }
+
+    public void GiveShield(int shieldAmount)
+    {
+        if (useScriptableShield)
+        {
+            if (shieldAmount > maxShield)
+            {
+                shield = maxShield;
+                shieldScriptable.value = maxShield;
+            }
+            else
+            {
+                shield += shieldAmount;
+                shieldScriptable.value += shieldAmount;
+            }
         }
     }
 
