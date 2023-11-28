@@ -28,7 +28,7 @@ public class DialogueManager : MonoBehaviour
     public AudioClip typeSFX;
     public AudioClip typeSFX2;
     public AudioClip pressSFX;
-    
+    public ScriptableFloat sfxValue;
 
     public bool freezePlayerOnDialogue = true;
     public DialogueTrigger currentInteractableObject;
@@ -79,6 +79,8 @@ public class DialogueManager : MonoBehaviour
         {
             OptionsBox.SetActive(true);
         }
+
+        audioSource.volume = sfxValue.value;
     }
 
     private void DisablePlayerController()
@@ -102,7 +104,6 @@ public class DialogueManager : MonoBehaviour
         }
         typeSFXToggle = 0;
         CanvasBox.SetActive(true); // open the dialogue box
-
         isOpen = true;
         inputStream = dialogue; // store the dialogue from dialogue trigger
         PrintDialogue(); // Prints out the first line of dialogue

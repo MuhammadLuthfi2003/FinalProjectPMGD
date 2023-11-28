@@ -134,14 +134,17 @@ MonoBehaviour:
   OptionsBox: {fileID: 6603216279957749223}
   yesBtnText: {fileID: 6603216280407046888}
   noBtnText: {fileID: 6603216281425558637}
-  typeSFX: {fileID: 8300000, guid: 7946c3710c521d943861d69f53d7b468, type: 3}
+  typeSFX: {fileID: 8300000, guid: 1375a32ecefc3e34b876a7bb220116fa, type: 3}
+  typeSFX2: {fileID: 8300000, guid: dc23ccf9cb1bc354392361a42eba8917, type: 3}
   pressSFX: {fileID: 8300000, guid: 79dafe2289e86b94dbe476ca2255f7d7, type: 3}
+  sfxValue: {fileID: 11400000, guid: a15c8eb7bc9ac3e4fa48f989ae1f909c, type: 2}
   freezePlayerOnDialogue: 0
   currentInteractableObject: {fileID: 0}
   isOpen: 0
   isQuestion: 0
   lastOptionChosen: 0
   isAnsweringQuestion: 0
+  typeSFXToggle: 0
 --- !u!82 &355381763
 AudioSource:
   m_ObjectHideFlags: 0

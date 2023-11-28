@@ -1,0 +1,157 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5785406803887170824
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5785406803887170827}
+  - component: {fileID: 5785406803887170829}
+  - component: {fileID: 5785406803887170826}
+  m_Layer: 0
+  m_Name: SFXPlayer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5785406803887170827
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5785406803887170824}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 6.3366756, y: -0.016618147, z: -0.958107}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &5785406803887170829
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5785406803887170824}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &5785406803887170826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5785406803887170824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6210e0bfee09ad640a98a703b1835097, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sfxVolume: {fileID: 11400000, guid: a15c8eb7bc9ac3e4fa48f989ae1f909c, type: 2}
+  clickSFX: {fileID: 8300000, guid: f3a77eed631bf544686007b5a1f598a9, type: 3}
+  exitWarningSFX: {fileID: 8300000, guid: 226fb5d9775abe04086b02e8cd4e9ac1, type: 3}
+  openWindowSFX: {fileID: 8300000, guid: 7053f6576ff63664a96e5414077aee8d, type: 3}
+  closeWindowSFX: {fileID: 8300000, guid: 7e2db24873e22524d9987f0670c2096e, type: 3}
+  winSFX: {fileID: 8300000, guid: 8ca442fe66c64ea449de641426377aee, type: 3}
+  gameOverSFX: {fileID: 8300000, guid: 3d9f9a776bcfa0d4e848e3cef9d3298e, type: 3}
+  swingBambooSFX: {fileID: 8300000, guid: 31decb3bf7991e143986df628cab6452, type: 3}
+  jumpSFX: {fileID: 8300000, guid: 8cc6a6f9940ef0f4cb61b5cca4375892, type: 3}
+  itemPickupSFX: {fileID: 8300000, guid: 3755c8169bebb484ebc207c30e1cfa2b, type: 3}
+  hitSFX: {fileID: 8300000, guid: 1ad7113444b302c408fe848ad883a9d2, type: 3}
+  hitgroundSFX: {fileID: 8300000, guid: c36fbbb1bc79d8448818547644be3fe9, type: 3}
+  enemyDeathSFX: {fileID: 8300000, guid: 544cd04e71e385b41b45dd771075e348, type: 3}
+  enemyShootSFX: {fileID: 8300000, guid: d8e70736ba4519c4cac49db49be9a209, type: 3}
