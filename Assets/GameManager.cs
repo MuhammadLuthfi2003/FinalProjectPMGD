@@ -39,6 +39,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         isPlaying = true;
+        ResetScriptableValues();
         kayubakar.defaultValue = kayubakarGoal;
         kayubakar.value = kayubakar.defaultValue;
     }
@@ -50,6 +51,29 @@ public class GameManager : MonoBehaviour
         {
             OnObjectiveComplete.Invoke();
             isPlaying = false;
+        }
+    }
+
+    public void ResetScriptableValues()
+    {
+        if (score.resetOnEnable)
+        {
+            score.value = score.defaultValue;
+        }
+
+        if (flag.resetOnEnable)
+        {
+            flag.value = flag.defaultValue;
+        }
+
+        if (healthScriptable.resetOnEnable)
+        {
+            healthScriptable.value = healthScriptable.defaultValue;
+        }
+
+        if (shield.resetOnEnable)
+        {
+            shield.value = shield.defaultValue;
         }
     }
 }

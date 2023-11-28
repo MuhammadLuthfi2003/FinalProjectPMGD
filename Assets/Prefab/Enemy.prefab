@@ -206,6 +206,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementRange: 8
+  soundRange: 15
+  stepSound: {fileID: 8300000, guid: d80366cc370f4e24b93b90dd9534e21c, type: 3}
+  stepSound2: {fileID: 8300000, guid: 46394cfea2b778e4db7a1dc455fc2735, type: 3}
+  stepSound3: {fileID: 8300000, guid: 562aad04c7ea0214988056f3b62e97f2, type: 3}
+  stepSound4: {fileID: 8300000, guid: cb5f9a3c3beee64419904dd6f3b11569, type: 3}
   speed: 1
   isFacingRight: 0
   isMoving: 1
@@ -225,7 +230,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   attackRange: 4.5
-  distanceCollider: 3.54
+  distanceCollider: 3.75
   player: {fileID: 0}
   collider: {fileID: 7762679952483843880}
   useEnemyPatrol: 1

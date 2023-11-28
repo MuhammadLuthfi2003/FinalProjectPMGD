@@ -22,6 +22,7 @@ public class LevelWinScript : MonoBehaviour
     //Shows the Level Win screen
     public void ShowLevelWin()
     {
+        SFXPlayer.Instance.PlayWinSFX();
         GameManager.Instance.player.GetComponent<PlayerController>().enabled = false;
         gameObject.SetActive(true);
     }

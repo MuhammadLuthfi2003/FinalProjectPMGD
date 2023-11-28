@@ -7,7 +7,7 @@ public class SFXPlayer : MonoBehaviour
 {
     public static SFXPlayer Instance;
 
-    private AudioSource audioSource;
+    public AudioSource audioSource;
 
     [Header("Volume Settings")]
     [SerializeField] ScriptableFloat sfxVolume;
@@ -27,6 +27,9 @@ public class SFXPlayer : MonoBehaviour
     public AudioClip itemPickupSFX;
     public AudioClip hitSFX;
     public AudioClip hitgroundSFX;
+    public AudioClip hideSFX;
+    public AudioClip shieldEquipSFX;
+    public AudioClip shieldbreakSFX;
 
     [Header("Enemy SFX")]
     public AudioClip enemyDeathSFX;
@@ -117,6 +120,21 @@ public class SFXPlayer : MonoBehaviour
     public void PlayHitGroundSFX()
     {
         audioSource.PlayOneShot(hitgroundSFX);
+    }
+
+    public void PlayHideSFX()
+    {
+        audioSource.PlayOneShot(hideSFX);
+    }
+
+    public void PlayShieldEquipSFX()
+    {
+        audioSource.PlayOneShot(shieldEquipSFX);
+    }
+
+    public void PlayShieldBreakSFX()
+    {
+        audioSource.PlayOneShot(shieldbreakSFX);
     }
 
     public void UpdateVolume()

@@ -12,6 +12,7 @@ public class KayuBakar : MonoBehaviour
         {
             GameManager.Instance.kayubakar.value--;
             GameManager.Instance.score.value += 10;
+            SFXPlayer.Instance.PlayItemPickupSFX();
             Destroy(gameObject);
         }
     }

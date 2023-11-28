@@ -40,6 +40,7 @@ public class VideoManager : MonoBehaviour
             if (PlayerPrefs.GetInt("HasPlayed") == 1)
             {
                 OnAllVideoDone.Invoke();
+                gameObject.SetActive(false);
             }
             else if (PlayerPrefs.GetInt("HasPlayed") == 0 || !PlayerPrefs.HasKey("HasPlayed"))
             {
@@ -139,7 +140,7 @@ public class VideoManager : MonoBehaviour
 
     IEnumerator DisableObj()
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(transitionTime);
         gameObject.SetActive(false);
     }
 

@@ -44,6 +44,7 @@ public class PlayerHide : MonoBehaviour
                 sprite.color = originalColor;
                 sprite.sortingOrder = originalLayer;
             }
+            SFXPlayer.Instance.PlayHideSFX();
         }
 
         if (!canHide)

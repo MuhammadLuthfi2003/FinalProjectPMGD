@@ -151,7 +151,10 @@ MonoBehaviour:
   swingBambooSFX: {fileID: 8300000, guid: 31decb3bf7991e143986df628cab6452, type: 3}
   jumpSFX: {fileID: 8300000, guid: 8cc6a6f9940ef0f4cb61b5cca4375892, type: 3}
   itemPickupSFX: {fileID: 8300000, guid: 3755c8169bebb484ebc207c30e1cfa2b, type: 3}
-  hitSFX: {fileID: 8300000, guid: 1ad7113444b302c408fe848ad883a9d2, type: 3}
+  hitSFX: {fileID: 8300000, guid: d0d425c0808efcf44ae889e3b314913d, type: 3}
   hitgroundSFX: {fileID: 8300000, guid: c36fbbb1bc79d8448818547644be3fe9, type: 3}
+  hideSFX: {fileID: 8300000, guid: 0f550b855febd2c48b9b1ce4b3cbb9f0, type: 3}
+  shieldEquipSFX: {fileID: 8300000, guid: 22b9b0df4a10b7d4dbff3cb775c7e20b, type: 3}
+  shieldbreakSFX: {fileID: 8300000, guid: 565ef59928f23864ca42054c8121ac3f, type: 3}
   enemyDeathSFX: {fileID: 8300000, guid: 544cd04e71e385b41b45dd771075e348, type: 3}
   enemyShootSFX: {fileID: 8300000, guid: d8e70736ba4519c4cac49db49be9a209, type: 3}

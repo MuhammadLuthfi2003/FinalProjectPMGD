@@ -11,6 +11,7 @@ public class Flag : MonoBehaviour
         {
             GameManager.Instance.flag.value++;
             GameManager.Instance.score.value += 30;
+            SFXPlayer.Instance.PlayItemPickupSFX();
             Destroy(gameObject);
         }
     }

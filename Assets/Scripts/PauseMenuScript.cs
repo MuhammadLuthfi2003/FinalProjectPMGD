@@ -24,6 +24,7 @@ public class PauseMenuScript : MonoBehaviour
     //Shows the Pause Menu
     public void ShowPauseMenu()
     {
+        SFXPlayer.Instance.PlayOpenWindowSFX();
         GameManager.Instance.player.GetComponent<PlayerController>().enabled = false;
         isPaused = true;
         pausePanel.SetActive(true);
@@ -34,6 +35,7 @@ public class PauseMenuScript : MonoBehaviour
     public void HidePauseMenu()
     {
         Time.timeScale = 1;
+        SFXPlayer.Instance.PlayCloseWindowSFX();
         isPaused = false;
         pausePanel.SetActive(false);
         GameManager.Instance.player.GetComponent<PlayerController>().enabled = true;
@@ -42,6 +44,7 @@ public class PauseMenuScript : MonoBehaviour
     //Restarts Game
     public void RestartGame()
     {
+        Time.timeScale = 1;
         GameManager.Instance.player.GetComponent<PlayerController>().enabled = true;
         int currentScene = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(currentScene);
@@ -50,6 +53,7 @@ public class PauseMenuScript : MonoBehaviour
     //Go Back to Main Menu
     public void ToMainMenu()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene(0);
     }
 
@@ -58,10 +62,12 @@ public class PauseMenuScript : MonoBehaviour
         if (isPaused)
         {
             HidePauseMenu();
+          
         }
         else
         {
             ShowPauseMenu();
+
         }
     }
 }

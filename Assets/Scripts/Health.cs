@@ -61,6 +61,7 @@ public class Health : MonoBehaviour
                 {
                     shieldScriptable.value -= damage;
                     damage = 0;
+                    SFXPlayer.Instance.PlayShieldBreakSFX();
                     return;
                 }
             }
@@ -74,10 +75,11 @@ public class Health : MonoBehaviour
             {
                 OnLifeReachedZero.Invoke();
                 isDead = true;
+                  
             }
 
             Instantiate(deathVFX, transform.position, Quaternion.identity);
-
+            SFXPlayer.Instance.PlayEnemyDeathSFX();
             return;
         }
 
@@ -128,6 +130,12 @@ public class Health : MonoBehaviour
             {
                 shield += shieldAmount;
                 shieldScriptable.value += shieldAmount;
+
+                if (shield > maxShield)
+                {
+                    shield = maxShield;
+                    shieldScriptable.value = maxShield;
+                }
             }
         }
     }

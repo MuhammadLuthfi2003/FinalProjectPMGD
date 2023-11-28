@@ -9,6 +9,7 @@ public class Shield : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            SFXPlayer.Instance.PlayShieldEquipSFX();
             collision.GetComponent<Health>().GiveShield(2);
             Destroy(gameObject);
         }

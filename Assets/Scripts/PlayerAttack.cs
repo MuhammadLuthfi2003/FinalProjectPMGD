@@ -150,4 +150,14 @@ new Vector3(collider.bounds.size.x * attackRange, collider.bounds.size.y, collid
 new Vector3(collider.bounds.size.x * attackRange, collider.bounds.size.y, collider.bounds.size.z));
         }
     }
+
+    public void PlaySwingSFX()
+    {
+        SFXPlayer.Instance.PlaySwingBambooSFX();
+    }
+
+    public void PlaySplatterSFX()
+    {
+        SFXPlayer.Instance.PlayHitSFX();
+    }
 }

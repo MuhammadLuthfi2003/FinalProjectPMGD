@@ -69,6 +69,7 @@ public class EnemyShoot : MonoBehaviour
     {
         if (shootTimer >= shootInterval)
         {
+            SFXPlayer.Instance.PlayEnemyShootSFX();
             if (useEnemyPatrol)
             {
                 if (enemyPatrol.isFacingRight)

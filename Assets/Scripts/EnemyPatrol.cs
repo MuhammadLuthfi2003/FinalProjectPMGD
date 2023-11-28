@@ -9,6 +9,16 @@ public class EnemyPatrol : MonoBehaviour
     private Vector3 pointLeft;
     private Vector3 pointRight;
 
+    [Header("Sound Settings")]
+    public float soundRange = 5;
+    private int stepSoundIndex = 0;
+    [SerializeField] private AudioClip stepSound;
+    [SerializeField] private AudioClip stepSound2;
+    [SerializeField] private AudioClip stepSound3;
+    [SerializeField] private AudioClip stepSound4;
+    bool canPlayStepSound = false;
+    
+
     [Header("Movement")]
     [SerializeField] public float speed;
 
@@ -22,6 +32,8 @@ public class EnemyPatrol : MonoBehaviour
     private Animator anim;
     private Health health;
 
+    private Transform playerPos;
+
 
     // Start is called before the first frame update
     void Start()
@@ -34,6 +46,8 @@ public class EnemyPatrol : MonoBehaviour
         {
             health = GetComponent<Health>();
         }
+
+        playerPos = GameManager.Instance.player.transform;
     }
 
     public void SetPatrolPoint(Vector3 newPos)
@@ -72,6 +86,15 @@ public class EnemyPatrol : MonoBehaviour
         if (health != null)
         {
             if (health.isDead) { return; }
+        }
+
+        if (Vector2.Distance(transform.position, playerPos.position) <= soundRange)
+        {
+            canPlayStepSound = true;
+        }
+        else
+        {
+            canPlayStepSound = false;
         }
 
         if (isMoving)
@@ -132,6 +155,29 @@ public class EnemyPatrol : MonoBehaviour
         else
         {
             currentPatrolPoint = pointLeft;
+        }
+    }
+
+    public void PlayStepSound()
+    {
+        if (canPlayStepSound)
+        {
+            if (stepSoundIndex % 4 == 0)
+            {
+                SFXPlayer.Instance.audioSource.PlayOneShot(stepSound);
+            }
+            else if (stepSoundIndex % 4 == 1)
+            {
+                SFXPlayer.Instance.audioSource.PlayOneShot(stepSound2);
+            }
+            else if (stepSoundIndex % 4 == 2)
+            {
+                SFXPlayer.Instance.audioSource.PlayOneShot(stepSound);
+            }
+            else if (stepSoundIndex % 4 == 3)
+            {
+                SFXPlayer.Instance.audioSource.PlayOneShot(stepSound);
+            }
         }
     }
 

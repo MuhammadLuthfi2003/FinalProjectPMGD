@@ -46,6 +46,7 @@ public class MainMenuManager : MonoBehaviour
         levelSelectPanel.SetActive(false);
         exitConfirmationPanel.SetActive(false);
         mainMenuPanel.SetActive(true);
+        SFXPlayer.Instance.PlayCloseWindowSFX();
     }
 
     public void openExitConfirmation()
