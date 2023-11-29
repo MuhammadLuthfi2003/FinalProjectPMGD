@@ -24,6 +24,7 @@ public class VideoManager : MonoBehaviour
     [SerializeField] private bool seeCutsceneOnReload = false;
 
     public UnityEvent OnAllVideoDone;
+    public UnityEvent OnVideoStart;
 
     private int currentVideoIndex = 0;
     private bool isTransitioning = false;
@@ -54,6 +55,11 @@ public class VideoManager : MonoBehaviour
         {
             Setup();
         }
+    }
+
+    private void Start()
+    {
+        OnVideoStart.Invoke();
     }
 
     private void Setup()

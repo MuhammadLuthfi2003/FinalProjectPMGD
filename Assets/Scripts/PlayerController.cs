@@ -13,10 +13,13 @@ public class PlayerController : MonoBehaviour
 
     public bool isFacingRight = true;
 
+
     private float dirX = 0;
     [SerializeField] private float moveSpeed = 7f;
     [SerializeField] private float jumpForce = 14f;
     [SerializeField] private LayerMask jumpableGround;
+    [SerializeField] bool isCutscene = false;
+    [SerializeField] bool isPlayingMusic = true;
 
     private enum MovementState { idle, running, jumping, falling }
 
@@ -38,6 +41,12 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (isCutscene)
+        {
+            anim.SetBool("isWalking", true);
+            return;
+        }
+
         dirX = Input.GetAxisRaw("Horizontal");
         if (dirX != 0)
         {
@@ -138,6 +147,8 @@ public class PlayerController : MonoBehaviour
 
     public void PlayStepSound()
     {
+        if (!isPlayingMusic) {  return; }   
+
         if (stepSoundIndex % 4 == 0)
         {
             SFXPlayer.Instance.audioSource.PlayOneShot(stepSound);
