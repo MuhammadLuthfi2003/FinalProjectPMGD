@@ -121,7 +121,7 @@ public class VideoManager : MonoBehaviour
         {
             if (playlist[currentVideoIndex].isSkippable)
             {
-                if (Input.GetKeyDown(KeyCode.F))
+                if (Input.GetKeyDown(KeyCode.Escape))
                 {
                     playlist[currentVideoIndex].videoPlayer.Stop();
                     isTransitioning = true;

@@ -109,8 +109,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4997434507220596390}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.2099991, y: 10.67, z: -5}
-  m_LocalScale: {x: 15, y: 15, z: 15}
+  m_LocalPosition: {x: 1.18, y: 10.667, z: -5}
+  m_LocalScale: {x: 14.6520815, y: 14.6520815, z: 14.6520815}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 5101760907086590549}
@@ -157,7 +157,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: 907105398, guid: dd569b92c6e21ae4db1d396186ff8889, type: 3}
+  m_Sprite: {fileID: -1361158013, guid: dd569b92c6e21ae4db1d396186ff8889, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -318,6 +318,8 @@ MonoBehaviour:
   jumpableGround:
     serializedVersion: 2
     m_Bits: 8
+  isCutscene: 0
+  isPlayingMusic: 1
   stepSound: {fileID: 8300000, guid: d80366cc370f4e24b93b90dd9534e21c, type: 3}
   stepSound2: {fileID: 8300000, guid: 46394cfea2b778e4db7a1dc455fc2735, type: 3}
   stepSound3: {fileID: 8300000, guid: 562aad04c7ea0214988056f3b62e97f2, type: 3}
@@ -407,7 +409,8 @@ MonoBehaviour:
   playerController: {fileID: 5101760907086590544}
   attackRange: 2.07
   attackDamage: 3
-  attackButton: 303
+  attackButton: 13
+  attackButton2: 323
   attackInterval: 1
   indicator: {fileID: 4997434507220596390}
   enemyLayer:

@@ -65,7 +65,7 @@ public class DialogueTrigger : MonoBehaviour
                     //displayText.enabled = true;
                     indicator.SetActive(true);
 
-                    if (Input.GetKeyDown(KeyCode.F))
+                    if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Return))
                     {
                         TriggerDialogue();
                         firstDialogFlag = false;
@@ -89,7 +89,7 @@ public class DialogueTrigger : MonoBehaviour
                    // displayText.enabled = true;
                    indicator.SetActive(true);
 
-                    if (Input.GetKeyDown(KeyCode.F))
+                    if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Return))
                     {
                         TriggerDialogue();
                         firstDialogFlag = false;
@@ -195,7 +195,7 @@ public class DialogueTrigger : MonoBehaviour
 
     private void OutputLine()
     {
-        if (Input.GetKeyDown(KeyCode.F) && nextTime < Time.timeSinceLevelLoad && !dialogueManager.isQuestion && dialogueManager.isOpen)
+        if ((Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Return)) && nextTime < Time.timeSinceLevelLoad && !dialogueManager.isQuestion && dialogueManager.isOpen)
         {
             if (!dialogueTiggered)
             {

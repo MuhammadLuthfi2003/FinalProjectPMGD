@@ -1,0 +1,294 @@
+fileFormatVersion: 2
+guid: 37bc54f615e5b1a44b69ebfd6535f2a0
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: mouse icons_60
+      rect:
+        serializedVersion: 2
+        x: 776
+        y: 94
+        width: 77
+        height: 113
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7ae02a1588f47f4eb0592ae6d2a522b
+      internalID: -1160306678
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mouse icons_61
+      rect:
+        serializedVersion: 2
+        x: 863
+        y: 94
+        width: 76
+        height: 113
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d69b0044f2f06804bbfc5c0831e26b92
+      internalID: -531806782
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mouse icons_62
+      rect:
+        serializedVersion: 2
+        x: 949
+        y: 94
+        width: 77
+        height: 113
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ba136cb2627a5d4587abd50f2e92028
+      internalID: -145941633
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mouse icons_63
+      rect:
+        serializedVersion: 2
+        x: 1036
+        y: 94
+        width: 76
+        height: 113
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4af53e83ebb2be468b6b39616bd4f25
+      internalID: 1008437582
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      mouse icons_11: -2115174348
+      mouse icons_3: -1067667014
+      mouse icons_43: -815188096
+      mouse icons_13: -2139066415
+      mouse icons_63: 1008437582
+      mouse icons_4: 976266783
+      mouse icons_28: 965768960
+      mouse icons_36: -2003969538
+      mouse icons_5: -2147044982
+      mouse icons_6: -282592283
+      mouse icons_7: 770696
+      mouse icons_9: 226185732
+      mouse icons_17: 1957018486
+      mouse icons_10: 1172159642
+      mouse icons_39: 1937405737
+      mouse icons_8: -1711512074
+      mouse icons_16: 1082187096
+      mouse icons_54: -1075893341
+      mouse icons_38: -775005357
+      mouse icons_32: -1514950686
+      mouse icons_35: 635132505
+      mouse icons_40: 638452227
+      mouse icons_41: -683791854
+      mouse icons_24: -649363742
+      mouse icons_50: -741866725
+      mouse icons_34: -620159040
+      mouse icons_57: -2054549574
+      mouse icons_18: -993245086
+      mouse icons_12: 1012851891
+      mouse icons_21: 1286884151
+      mouse icons_44: 708430909
+      mouse icons_23: 2084047021
+      mouse icons_15: 180486796
+      mouse icons_29: 1359432605
+      mouse icons_58: -1634386563
+      mouse icons_61: -531806782
+      mouse icons_55: -2128669397
+      mouse icons_37: 825250375
+      mouse icons_22: 203169055
+      mouse icons_53: -1733456733
+      mouse icons_47: 2013184304
+      mouse icons_59: -377082196
+      mouse icons_46: -1974208787
+      mouse icons_52: 577451207
+      mouse icons_60: -1160306678
+      mouse icons_0: -1165979540
+      mouse icons_49: 1355886714
+      mouse icons_26: 1160645667
+      mouse icons_19: -2023859297
+      mouse icons_1: -1440096551
+      mouse icons_14: -1806652474
+      mouse icons_33: -477815397
+      mouse icons_20: 1086449187
+      mouse icons_45: -791767523
+      mouse icons_51: -2082897767
+      mouse icons_30: -1008549501
+      mouse icons_56: -648208790
+      mouse icons_31: -1302777226
+      mouse icons_42: -1992673630
+      mouse icons_62: -145941633
+      mouse icons_48: -1694550574
+      mouse icons_25: -362527160
+      mouse icons_2: 588232116
+      mouse icons_27: 257885454
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

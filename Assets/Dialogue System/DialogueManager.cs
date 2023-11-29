@@ -129,7 +129,7 @@ public class DialogueManager : MonoBehaviour
         }
         else if (isTyping)
         {
-            if (Input.GetKeyDown(KeyCode.F))
+            if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Return))
             {
                 StopAllCoroutines();
                 TextBox.text = currentText;

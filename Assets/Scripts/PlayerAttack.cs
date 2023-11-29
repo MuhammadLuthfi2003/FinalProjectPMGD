@@ -13,6 +13,7 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private float attackRange = 1f;
     [SerializeField] private int attackDamage = 1;
     [SerializeField] KeyCode attackButton;
+    [SerializeField] KeyCode attackButton2;
     [SerializeField] private float attackInterval = 1f;
 
     [Header("Indicator")]
@@ -42,7 +43,7 @@ public class PlayerAttack : MonoBehaviour
         if (CheckEnemy() && !GameManager.Instance.player.GetComponent<PlayerHide>().isHiding)
         {
             indicator.SetActive(true);
-            if (Input.GetKeyDown(attackButton))
+            if (Input.GetKeyDown(attackButton) || Input.GetKeyDown(attackButton2))
             {
                 if (enemyInRange != null && timeSinceLastAttack > attackInterval)
                 {
