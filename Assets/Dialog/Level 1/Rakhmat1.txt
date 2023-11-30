@@ -9,15 +9,15 @@ Arka! kesini sebentar!
 {Y} Baiklah jika begitu
 
 {N} Baiklah, akan ku jelaskan caranya.
-{N} Ketika anda sudah berada di dekat musuh, tekan tombol Shift Kanan untuk menyerang.
+{N} Ketika anda sudah berada di dekat musuh, tekan tombol Enter atau Klik kiri mouse untuk menyerang.
 {N} Apabila anda terlihat musuh, larilah ke tempat persembunyian, karena musuh akan menembakkan peluru.
-{N} contoh tempat persembunyian yang dapat ditemukan adalah :
-{N} Semak-semak, rumput, pohon dan objek lainnya yang memiliki garis putih diluarnya.
+{N} contoh tempat persembunyian yang dapat ditemukan adalah:
+{N} Semak-semak, rumput, pohon dan objek lainnya yang akan memperbesar sedikit ketika anda mendekatinya.
 {N} Ketika anda berada di tempat persembunyian, tekan tombol E untuk bersembunyi.
 {N} Ketika bersembunyi, musuh tidak akan melihat anda dan peluru yang ditembakkan musuh tidak akan mengenai anda.
 {N} Akan tetapi, ketika bersembunyi, anda tidak dapat menyerang musuh.
 {N} Oleh karena itu, anda harus keluar dari tempat persembunyian untuk menyerang musuh.
-{N} Untuk keluar dari tempat persembunyian, tekan tombol E lagi.
+{N} Untuk keluar dari tempat persembunyian, tekan tombol E lagi atau jalan saja keluar menjauhi tempat persembunyian.
 {N} Itu saja dari saya mengenai cara mengalahkan musuh.
 [ENDCHOICE]
 

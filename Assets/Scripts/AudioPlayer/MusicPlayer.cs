@@ -11,6 +11,7 @@ public class MusicPlayer : MonoBehaviour
     [SerializeField] AudioClip music;
     [SerializeField] ScriptableFloat musicVolume;
     [SerializeField] bool isLooping = true;
+    [Range(1,100)] [SerializeField] float divisor = 1f;
 
     private AudioSource audioSource;
 
@@ -31,6 +32,7 @@ public class MusicPlayer : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         audioSource.clip = music;
         audioSource.volume = musicVolume.value;
+        audioSource.volume /= divisor;
         if (isLooping)
         {
             audioSource.loop = true;
@@ -41,6 +43,7 @@ public class MusicPlayer : MonoBehaviour
     public void UpdateVolume()
     {
         audioSource.volume = musicVolume.value;
+        audioSource.volume /= divisor;
     }
 
 }

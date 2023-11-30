@@ -1,7 +1,7 @@
 [NAME=Sumanto]
 Arka!, ada sesuatu yang ingin ku kasih tau kepadamu
 [NAME=Arka] Apa itu mas Sumanto?
-[NAME=Sumanto] Saya melihat ada musuh yang memiliki kayu bakar yang kita incer
+[NAME=Sumanto] Saya melihat ada musuh yang memiliki kayu bakar yang kita incar
 [NAME=Arka] Baiklah, saya akan mengalahkan musuh itu
 [NAME=Sumanto] Oke, semoga berhasil!
 
