@@ -33,6 +33,7 @@ public class VideoManager : MonoBehaviour
     public float currentAlpha = 0f;
 
     private bool hasAddedIndex = false;
+    private bool hasExecuteVideoStart = false;
 
     private void Awake()
     {
@@ -55,11 +56,6 @@ public class VideoManager : MonoBehaviour
         {
             Setup();
         }
-    }
-
-    private void Start()
-    {
-        OnVideoStart.Invoke();
     }
 
     private void Setup()
@@ -131,6 +127,11 @@ public class VideoManager : MonoBehaviour
                 }
             }
         }
+
+        if (!hasExecuteVideoStart)
+        {
+            Invoke("ExecuteVideoStart", 2f);
+        }
     }
 
     IEnumerator PlayVideo(float delayTime)
@@ -154,5 +155,14 @@ public class VideoManager : MonoBehaviour
     {
         PlayerPrefs.SetInt("HasPlayed", 0);
         PlayerPrefs.Save();
+    }
+
+    private void ExecuteVideoStart()
+    {
+        if (!hasExecuteVideoStart)
+        {
+            OnVideoStart.Invoke();
+            hasExecuteVideoStart = true;
+        }
     }
 }
