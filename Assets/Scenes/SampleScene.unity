@@ -5149,6 +5149,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DialogueManager
       objectReference: {fileID: 0}
+    - target: {fileID: 6603216281043563274, guid: 339031da3d36c004cb46ba2317237819, type: 3}
+      propertyPath: m_Text
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6603216281043563275, guid: 339031da3d36c004cb46ba2317237819, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -0.0028686523
@@ -13641,7 +13645,7 @@ GameObject:
   - component: {fileID: 1876402703}
   - component: {fileID: 1876402702}
   m_Layer: 5
-  m_Name: Sound
+  m_Name: Musik
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13687,7 +13691,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Sound
+  m_text: Musik
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4ab32b1aba703a64cae920ee5c567b1f, type: 2}
   m_sharedMaterial: {fileID: -8845847152003581783, guid: 4ab32b1aba703a64cae920ee5c567b1f, type: 2}
@@ -14522,7 +14526,7 @@ GameObject:
   - component: {fileID: 1980286247}
   - component: {fileID: 1980286246}
   m_Layer: 5
-  m_Name: Sound
+  m_Name: Musik
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14568,7 +14572,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Sound
+  m_text: Musik
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
